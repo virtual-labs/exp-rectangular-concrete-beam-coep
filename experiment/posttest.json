@@ -1,39 +1,69 @@
-{
+
+ {
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": " What is the primary purpose of providing longitudinal reinforcement in a rectangular reinforced concrete beam?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+         "a": "Increase compressive strength  ",
+        "b": "Enhance tensile strength  ",
+        "c": "Improve durability  ",
+        "d": "Reduce deflection"
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
-      "correctAnswer": "a",
+      
+      "correctAnswer": "b",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "According to IS 456:2000, what is the minimum percentage of tensile reinforcement required in a rectangular beam?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "0.15%  ",
+        "b": "0.20%  ",
+        "c": "0.25%  ",
+        "d": "0.30% "
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+     
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In the design of a rectangular beam, what does the term clear cover refer to?",
+      "answers": {
+        "a": "Depth of the beam  ",
+        "b": "Distance between supports  ",
+        "c": "Distance between the outer face of the concrete and the center of the outermost reinforcement  ",
+        "d": "Thickness of the beam"
       },
+     
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+	{
+      "question": "What is the purpose of providing shear reinforcement, such as stirrups, in a rectangular beam?",
+      "answers": {
+        "a": "Enhance compressive strength  ",
+        "b": "Resist torsional forces  ",
+        "c": "Increase ductility  ",
+        "d": "Reduce deflection"
+      },
+     
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+	{
+      "question": "In a simply supported rectangular beam, where is the maximum bending moment typically located?",
+      "answers": {
+        "a": "At the support  ",
+        "b": "At the center  ",
+        "c": "At midspan  ",
+        "d": "At the free end "
+      },
+     
       "correctAnswer": "c",
       "difficulty": "beginner"
     }
+	
+
+  
   ]
 }
