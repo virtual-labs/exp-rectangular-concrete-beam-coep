@@ -74,8 +74,6 @@ var width = $(window).width();
      var rect21 = paper.rect(x+480,y+85,60,90).attr({'stroke':'#000','stroke-width': 2,'fill':color});
       rect3 = paper.rect(x+71,y+175,(40+w1Val),50).attr({'stroke':'#000','stroke-width': 2,'fill':color});
       rect4 = paper.path("M"+(x+424)+" "+(y+175)+"l 0 50 l "+(-40-w2Val)+" 0 "+"l 0 -50 z").attr({'stroke':'#000','stroke-width': 2,'fill':color});
-//     var rect4 = paper.rect(x+424,y+175,50,50).attr({'stroke':'#000','stroke-width': 2,'fill':color});
-//     var rect4 = paper.rect(x+349,y+175,(20+w2Val),50).attr({'stroke':'#000','stroke-width': 2,'fill':color});
 	
 	 paper.path('M' + (x + 50) + ' ' + (y + 130 )  + 'l 500 0')		
 		.attr({ 'stroke-dasharray':  "-.",'stroke': '#a89f8a', 'stroke-width': 2}).toFront();
@@ -112,10 +110,10 @@ var width = $(window).width();
 	var line1w2 = paper.path(arr3+"M"+(x+423)+" "+(y+255)+"l "+(-(40+w2Val)+1)+" 0"+arr4).attr({ 'stroke': '#000', 'stroke-width': 2});
 	
 	
-	 var w1 = paper.text((x +71+(40+w1Val)/2),y+270,"w1").attr({'font-weight': 'bold','font-size':'18px','stroke':'#f20515'});                 
+//	 var w1 = paper.text((x +71+(40+w1Val)/2),y+270,"w1").attr({'font-weight': 'bold','font-size':'18px','stroke':'#f20515'});                 
 
     
-	 var w2 = paper.text((x +425-(40+w2Val)/2),y+270,"w2").attr({'font-weight': 'bold','font-size':'18px','stroke':'#f20515'}); 
+//	 var w2 = paper.text((x +425-(40+w2Val)/2),y+270,"w2").attr({'font-weight': 'bold','font-size':'18px','stroke':'#f20515'}); 
 
     	var totL = ((40+w2Val)/2)+((40+w1Val)/2);
     	var finValL = 353-totL;
@@ -184,7 +182,7 @@ var width = $(window).width();
     var l17 = paper.path("M"+(x+387)+" "+(y+40)+"l 0 42 ").attr({'stroke':'#000','stroke-width': 2});         
    var l18 = paper.path("M"+(x+387)+" "+(y+82)+"l 7 -7 l -14 0 z").attr({'stroke':'#000','stroke-width': 2,'fill':'#000'});
     
-    var t4 = paper.text(x+250,y+28,"wu ").attr({'font-weight': 'bold','font-size':'18px','stroke':'#f20515'});
+//    var t4 = paper.text(x+250,y+28,"wu ").attr({'font-weight': 'bold','font-size':'18px','stroke':'#f20515'});
 	
 	
 //	function change(){
@@ -211,13 +209,30 @@ var width = $(window).width();
   
 //	function getValuesEntered(){
 		textl0.remove();
-		w1.remove();
-		w2.remove();
-		t4.remove();
+//		w1.remove();
+//		w2.remove();
+//		t4.remove();
 		t12 = paper.text(z-90,y+193,"Lo : "+beamSpanVal+"m").attr({'font-weight': 'bold','font-size':'18px','stroke':'#f20515'});
-		w1 = paper.text(x+110,y+270,"w1 : "+w1WidthVal+"m").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'});
-		w2 = paper.text(x+390,y+270,"w2 : "+w2WidthVal+"m").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'}); 
-		t4 = paper.text(x+250,y+28,"w  : "+loadMagVal+"kN/m").attr({'font-weight': 'bold','font-size':'18px','stroke':'#f20515'});
+//		w1 = paper.text(x+110,y+270,"w1 : +w1WidthVal+"m").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'});
+
+      w1 = paper.text(x+60,y+270,"w ").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'});
+    wr4 = paper.text(x+70,y+275,"1 ").attr({'font-weight': 'bold','font-size':'8px','stroke':'#f20515'});
+    wr41 = paper.text(x+110,y+270," : "+w1WidthVal+" m").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'});
+
+
+//		w2 = paper.text(x+390,y+270,"w2 : "+w2WidthVal+"m").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'});
+
+ w2 = paper.text(x+370,y+270,"w ").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'});
+ 	wr5 = paper.text(x+380,y+275,"2 ").attr({'font-weight': 'bold','font-size':'8px','stroke':'#f20515'}); 
+  	wr51 = paper.text(x+420,y+270," : "+w2WidthVal+" m").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'});
+
+ 
+//		t4 = paper.text(x+250,y+28,"w  : "+loadMagVal+"kN/m").attr({'font-weight': 'bold','font-size':'18px','stroke':'#f20515'});
+        t4 = paper.text(x+230,y+28,"w").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'});
+    tr4 = paper.text(x+240,y+33,"u ").attr({'font-weight': 'bold','font-size':'10px','stroke':'#f20515'});
+    tr41 = paper.text(x+280,y+28," : "+loadMagVal+" kN/m").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'});
+
+
 //	} 
 	
 	
@@ -231,22 +246,37 @@ var width = $(window).width();
 //	}
 
 //    function updateLoadMag(){
-			t4.remove();
+//			t4.remove();
 		loadMagVal = $("#loadMag").val();
-	t4 = paper.text(x+250,y+28,"wu  : "+loadMagVal+"kN/m").attr({'font-weight': 'bold','font-size':'18px','stroke':'#f20515'});
+//	t4 = paper.text(x+250,y+28,"wu  : "+loadMagVal+"kN/m").attr({'font-weight': 'bold','font-size':'18px','stroke':'#f20515'});
+
+	t4 = paper.text(x+230,y+28,"w").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'});
+    tr4 = paper.text(x+240,y+33,"u ").attr({'font-weight': 'bold','font-size':'10px','stroke':'#f20515'});
+    tr41 = paper.text(x+280,y+28," : "+loadMagVal+" kN/m").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'});
+
 //}
  
 // function updateValW1(){
-	w1.remove();
+//	w1.remove();
     w1WidthVal = $("#w1Width").val();
-	w1 = paper.text(x+110,y+270,"w1 : "+w1WidthVal+"m").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'});
+//	w1 = paper.text(x+110,y+270,"w1 : "+w1WidthVal+"m").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'});
+
+	w1 = paper.text(x+60,y+270,"w ").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'});
+    wr4 = paper.text(x+70,y+275,"1 ").attr({'font-weight': 'bold','font-size':'8px','stroke':'#f20515'});
+    wr41 = paper.text(x+110,y+270," : "+w1WidthVal+" m").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'});
 
 //}
  
 // function updateValW2(){
-	w2.remove();
+//	w2.remove();
     w2WidthVal = $("#w2Width").val();
-	w2 = paper.text(x+390,y+270,"w2 : "+w2WidthVal+"m").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'}); 
+//	w2 = paper.text(x+390,y+270,"w2 : "+w2WidthVal+"m").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'}); 
+
+ 	w2 = paper.text(x+370,y+270,"w ").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'});
+ 	wr5 = paper.text(x+380,y+275,"2 ").attr({'font-weight': 'bold','font-size':'8px','stroke':'#f20515'}); 
+  	wr51 = paper.text(x+420,y+270," : "+w2WidthVal+" m").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'});
+
+
 
 //}
  } 
