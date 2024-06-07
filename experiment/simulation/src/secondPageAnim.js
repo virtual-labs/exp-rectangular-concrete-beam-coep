@@ -1,4 +1,5 @@
 function SecondPage(){
+	$("#page2Div2").html('');
 	var x=50,y=-50;
 	var z = x+350;
 x=50,y=-100;
@@ -21,7 +22,7 @@ x=50,y=-100;
 		paper.setViewBox(0, 0, w, h, true);
 		paper.setSize('90%', '90%');
 	}
-
+   
 	var t11 = paper.text(x+443,y+175,"B").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
         var t2 = paper.text(x+55,y+175,"A").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'}); 
         
@@ -79,7 +80,12 @@ x=50,y=-100;
     var l17 = paper.path("M"+(x+387)+" "+(y+130)+"l 0 42 ").attr({'stroke':'#000','stroke-width': 2});         
     var l18 = paper.path("M"+(x+387)+" "+(y+172)+"l 7 -7 l -14 0 z").attr({'stroke':'#000','stroke-width': 2,'fill':'#000'});
     
-      t44 = paper.text(x+260,y+120,"w : "+loadMagVal+ " kN/m").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});   
+//      t44 = paper.text(x+260,y+120,"w : "+loadMagVal+ " kN/m").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});   
+      
+     var t44 = paper.text(x+240,y+120,"w ").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
+     var t441 = paper.text(x+250,y+125,"u ").attr({'font-weight': 'bold','font-size':'8px','stroke':'red'});
+     var t444 = paper.text(x+290,y+120," : "+loadMagVal+" kN/m").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
+
       
 
 //	var s1 = paper.path("M"+(z-278)+" "+(y+310)+"l 0 40"+"M"+(z-278)+" "+(y+310)+"l 353 80 l 0 -40 l -353 0 ").attr({ 'stroke': 'red', 'stroke-width': 2});
@@ -96,7 +102,7 @@ x=50,y=-100;
 var s1;
 function factLoad(){
 	
-	
+	$("#page2Div2").html('');
 	var x=50,y=-50;
 	var z = x+350;
     x=50,y=-100;
@@ -126,7 +132,7 @@ function factLoad(){
 
     t1 = paper.text(z-100,y+225,"L").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});    
     t2 = paper.text(z-85,y+227,"eff").attr({'font-weight': 'bold','font-size':'12px','stroke':'red'});
-          
+            
           var lin1 = paper.path("M"+(z+75)+" "+(y+225)+"l 0 30"+"M"+(z-278)+" "+(y+225)+"l 0 30").attr({ 'stroke': '#000', 'stroke-width': 2});
             var linB = paper.path("M"+(x+71.5)+" "+(y+175)+"l 353 0").attr({ 'stroke': '#000', 'stroke-width': 2});         
 
@@ -178,8 +184,11 @@ function factLoad(){
     var l18 = paper.path("M"+(x+387)+" "+(y+172)+"l 7 -7 l -14 0 z").attr({'stroke':'#000','stroke-width': 2,'fill':'#000'});
     
 //     var wuload = parseInt(facLoad);
-      t44 = paper.text(x+260,y+120,"wu : "+facLoad+" kN/m").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
-      
+      var t44 = paper.text(x+240,y+120,"w ").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
+     var t441 = paper.text(x+250,y+125,"u ").attr({'font-weight': 'bold','font-size':'8px','stroke':'red'});
+     var t444 = paper.text(x+290,y+120," : "+loadMagVal+" kN/m").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
+
+
 
 //      t45 = paper.text(x+260,y+120,"u").attr({'font-weight': 'bold','font-size':'12px','stroke':'red'}); 
 //      t46 = paper.text(x+260,y+120," : "+facLoad).attr({'font-weight': 'bold','font-size':'12px','stroke':'red'});    
@@ -206,7 +215,7 @@ function factLoad(){
 
 
 function leffective(){
-	
+	$("#page2Div2").html('');
 	var x=50,y=-50;
 	var z = x+350;
     x=50,y=-100;
@@ -236,8 +245,8 @@ function leffective(){
      
     t1 = paper.text(z-100,y+225,"L").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});    
     t2 = paper.text(z-85,y+227,"eff").attr({'font-weight': 'bold','font-size':'12px','stroke':'red'});
-    t3 = paper.text(z-50,y+227," : "+effspan+" m").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
-          
+    t3 = paper.text(z-55,y+227," : "+effspan).attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
+            
           var lin1 = paper.path("M"+(z+75)+" "+(y+225)+"l 0 30"+"M"+(z-278)+" "+(y+225)+"l 0 30").attr({ 'stroke': '#000', 'stroke-width': 2});
             var linB = paper.path("M"+(x+71.5)+" "+(y+175)+"l 353 0").attr({ 'stroke': '#000', 'stroke-width': 2});         
 
@@ -289,13 +298,15 @@ function leffective(){
     var l18 = paper.path("M"+(x+387)+" "+(y+172)+"l 7 -7 l -14 0 z").attr({'stroke':'#000','stroke-width': 2,'fill':'#000'});
     
      var wuload = parseInt(facLoad);
-      t44 = paper.text(x+260,y+120,"wu : "+facLoad+" kN/m").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
-	
+ var t44 = paper.text(x+240,y+120,"w ").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
+     var t441 = paper.text(x+250,y+125,"u ").attr({'font-weight': 'bold','font-size':'8px','stroke':'red'});
+     var t444 = paper.text(x+290,y+120," : "+loadMagVal+" kN/m").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
+
 }
 
 var s11;
 function shearForceFinal(){
-	
+	$("#page2Div2").html('');
 	var x=50,y=-50;
 	var z = x+350;
     x=50,y=-100;
@@ -325,8 +336,8 @@ function shearForceFinal(){
      
     t1 = paper.text(z-100,y+225,"L").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});    
     t2 = paper.text(z-85,y+227,"eff").attr({'font-weight': 'bold','font-size':'12px','stroke':'red'});
-    t3 = paper.text(z-50,y+227," : "+effspan).attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
-          
+    t3 = paper.text(z-55,y+227," : "+effspan).attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
+           
           var lin1 = paper.path("M"+(z+75)+" "+(y+225)+"l 0 30"+"M"+(z-278)+" "+(y+225)+"l 0 30").attr({ 'stroke': '#000', 'stroke-width': 2});
             var linB = paper.path("M"+(x+71.5)+" "+(y+175)+"l 353 0").attr({ 'stroke': '#000', 'stroke-width': 2});         
 
@@ -378,8 +389,10 @@ function shearForceFinal(){
     var l18 = paper.path("M"+(x+387)+" "+(y+172)+"l 7 -7 l -14 0 z").attr({'stroke':'#000','stroke-width': 2,'fill':'#000'});
     
      var wuload = parseInt(facLoad);
-      t44 = paper.text(x+260,y+120,"wu : "+facLoad+" kN/m").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
-	
+ var t44 = paper.text(x+240,y+120,"w ").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
+     var t441 = paper.text(x+250,y+125,"u ").attr({'font-weight': 'bold','font-size':'8px','stroke':'red'});
+     var t444 = paper.text(x+290,y+120," : "+loadMagVal+" kN/m").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
+
 //	if(shearForce%2==0){
 //		s11 = parseInt(shearForce);
 //	}else{
@@ -394,6 +407,10 @@ function shearForceFinal(){
 
 var b1;
 function bendingMomentFinal(){
+	
+	$("#page2Div2").html('');
+	
+	console.log("Dhanashree");
 	var x1=100,y1=100;
 	var x=50,y=-50;
 	var z = x+350;
@@ -424,7 +441,7 @@ function bendingMomentFinal(){
      
     t1 = paper.text(z-100,y+225,"L").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});    
     t2 = paper.text(z-85,y+227,"eff").attr({'font-weight': 'bold','font-size':'12px','stroke':'red'});
-    t3 = paper.text(z-50,y+227," : "+effspan).attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
+    t3 = paper.text(z-55,y+227," : "+effspan).attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
           
           var lin1 = paper.path("M"+(z+75)+" "+(y+225)+"l 0 30"+"M"+(z-278)+" "+(y+225)+"l 0 30").attr({ 'stroke': '#000', 'stroke-width': 2});
             var linB = paper.path("M"+(x+71.5)+" "+(y+175)+"l 353 0").attr({ 'stroke': '#000', 'stroke-width': 2});         
@@ -477,8 +494,10 @@ function bendingMomentFinal(){
     var l18 = paper.path("M"+(x+387)+" "+(y+172)+"l 7 -7 l -14 0 z").attr({'stroke':'#000','stroke-width': 2,'fill':'#000'});
     
 //     var wuload = parseInt(facLoad);
-      t44 = paper.text(x+260,y+120,"wu : "+facLoad+" kN/m").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
-	
+ var t44 = paper.text(x+240,y+120,"w ").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
+     var t441 = paper.text(x+250,y+125,"u ").attr({'font-weight': 'bold','font-size':'8px','stroke':'red'});
+     var t444 = paper.text(x+290,y+120," : "+loadMagVal+" kN/m").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
+
 //	if(shearForce%2==0){
 //		s11 = parseInt(shearForce);
 //	}else{

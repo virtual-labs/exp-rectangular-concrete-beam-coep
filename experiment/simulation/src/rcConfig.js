@@ -1,7 +1,7 @@
 
 
-var conVal;
-var steelVal;
+var conVal = 20;
+var steelVal = 500;
 var configDiag;
 var beamWidthVal;
 var beamSpanVal;
@@ -9,21 +9,23 @@ var loadOnBeamVal;
 var loadMagVal;
 var w1WidthVal;
 var w2WidthVal;
-var longReinVal;
-var shearReinVal;
+var longReinVal = 12;
+var shearReinVal = 8;
 var nominalCoverVal;
 var	effectdepthVal ;
 var lenghtBeam;
 var divFlg = 0;
 var steelStr;
+var initFlag = false;
+
 
 var htm=''
 	htm+='<div class="row">'	
 	+'<div class="col-sm-6">'
-	+'<label class="labelstyle marginBottom" >Enter clear span of Beam L<sub>0</sub>(m) : </label>'
+	+'<label class="labelstyle marginBottom" >Enter the value of clear span of beam  <label style="color:#8f0831;">L<sub>0</sub> (m)</label> : </label>'
 	+'</div>'
 	+'<div class="col-sm-4">'
-	+'<input type="number"   onblur="updateBeamSpanVal()" style= "width:100%;"  class=" form-control" id="beamSpan">'
+	+'<input type="number"   onblur="updateBeamSpanVal()" style= "width:100%;"  class=" form-control" id="beamSpan" >'
 	+'</div>'
 	+'<div class="col-sm-3">'
 	+'</div>'	
@@ -31,12 +33,12 @@ var htm=''
     
        +  '<div class="row">'
 	   +'<div class="col-sm-6">'
-	   +'<label class="labelstyle marginBottom">Grade of Concrete f<sub>ck</sub> : </label>'
+	   +'<label class="labelstyle marginBottom">Select Grade of Concrete f<sub>ck</sub> : </label>'
 	   +'</div>'	   
 	   +'<div class="col-sm-3">'
 	   +'<select  class="form-control selectConf marginBottom" id="concreteGrade" " style="height:auto;margin-bottom:5px; " >'
 	   +'<option value="0">--- Select grade of concrete --- </option>'
-	   +'<option value="10" >M10  </option>'
+//	   +'<option value="10" >M10  </option>'
 	   +'<option value="15" >M15  </option>'
 	   +'<option value="20" >M20  </option>'
 	   +'<option value="25" >M25  </option>'
@@ -63,7 +65,7 @@ var htm=''
 	   
 	   + '<div class="row">'	     
 	   +'<div class="col-sm-6">'
-	   +'<label class="labelstyle marginBottom">Grade of Steel f<sub>y</sub> : </label>'
+	   +'<label class="labelstyle marginBottom">Select Grade of Steel f<sub>y</sub> : </label>'
 	   +'</div>'
 	   
 	   +'<div class="col-sm-3">'
@@ -83,7 +85,7 @@ var htm=''
 	   
 	   + '<div class="row">'	     
 	   +'<div class="col-sm-6">'
-	   +'<label class="labelstyle marginBottom">Load acting on beam :  </label>'
+	   +'<label class="labelstyle marginBottom">Select type of load acting on beam :  </label>'
 	   +'</div>'
 	   
 	   +'<div class="col-sm-4">'
@@ -102,10 +104,10 @@ var htm=''
     
 	+'<div class="row">'	
 	+'<div class="col-sm-6">'
-	+'<label class="labelstyle marginBottom">Enter magnitude of Load w (kN/m): </label>'
+	+'<label class="labelstyle marginBottom">Enter magnitude of Load  <label style="color:#8f0831;">w (kN/m)</label>: </label>'
 	+'</div>'
 	+'<div class="col-sm-4">'
-	+'<input type="number"  style= "width:100%; " onblur="updateLoadMag()" class=" form-control" id="loadMag">'
+	+'<input type="number"  style= "width:100%; " onblur="updateLoadMag()" class=" form-control" id="loadMag" >'
 	+'</div>'
 	+'<div class="col-sm-2">'
 	+'</div>'	
@@ -115,13 +117,13 @@ var htm=''
 	+'<div class="col-sm-6">'
 	+'</div>'
 	+'<div class="col-sm-6">'
-	+'<span><label class="labelstyle" style="margin-bottom:-50px;">(liveLoad + deadLoad)</label></span>'
+	+'<span><label class="labelstyle" style="margin-bottom:15px;">(Dead load + Live load)</label></span>'
 	+'</div>'
 	+'</div>'
 	
 	+ '<div class="row">'	     
 	   +'<div class="col-sm-6">'
-	   +'<label class="labelstyle marginBottom">Enter width b (mm) :  </label>'
+	   +'<label class="labelstyle marginBottom">Enter width of beam  <label style="color:#8f0831;">b (mm)</label> :  </label>'
 	   +'</div>'
 	   
 	   +'<div class="col-sm-4">'
@@ -146,7 +148,7 @@ var htm=''
 	   
 	   + '<div class="row">'
 	   +'<div class="col-sm-6">'
-	   +'<label class="labelstyle marginBottom" >Enter width of Support w1 (m) :  </label>'
+	   +'<label class="labelstyle marginBottom" >Enter width of support  <label style="color:#8f0831;">w<sub>1</sub> (m)</label> :  </label>'
 	   +'</div>'
 	   +'<div class="col-sm-4">'
 	   +'<input type="number"  style= "width:100%;"  class=" form-control" id="w1Width" onblur="updateValW1()" >'
@@ -157,10 +159,10 @@ var htm=''
 	   
 	   + '<div class="row">'
 	   +'<div class="col-sm-6">'
-	   +'<label class="labelstyle marginBottom">Enter width of Support w2 (m) :  </label>'
+	   +'<label class="labelstyle marginBottom">Enter width of support <label style="color:#8f0831;">w<sub>2</sub> (m) </label>:  </label>'
 	   +'</div>'
 	   +'<div class="col-sm-4">'
-	   +'<input type="number"  style= "width:100%;"  class=" form-control" id="w2Width" onblur="updateValW2()" >'
+	   +'<input type="number"  style= "width:100%;"  class=" form-control" id="w2Width" onblur="updateValW2(),ren()" >'
 	   +'</div>'
 	   +'<div class="col-sm-2">'
 	   +'</div>'
@@ -170,7 +172,7 @@ var htm=''
 	   
 	   + '<div class="row">'
 	   +'<div class="col-sm-6">'
-	   +'<label class="labelstyle marginBottom">Use bar Diameter longitudinal reinforcement (&empty; mm) : </label>'
+	   +'<label class="labelstyle marginBottom">Assume bar diameter for longitudinal reinforcement <label style="color:#8f0831;">(&empty; mm)</label> : </label>'
 	   +'</div>'
 	   +'<div class="col-sm-4">'
 	    +'<select  class="form-control selectConf marginBottom" id="longRein" " style="height:auto;margin-bottom:5px; " >'
@@ -193,7 +195,7 @@ var htm=''
 	   
 	   + '<div class="row">'
 	   +'<div class="col-sm-6">'
-	   +'<label class="labelstyle marginBottom">Use bar Diameter shear reinforcement (&empty;<sub>s</sub> mm) : </label>'
+	   +'<label class="labelstyle marginBottom">Assume bar diameter for shear reinforcement <label style="color:#8f0831;">(&empty;<sub>s</sub> mm)</label> : </label>'
 	   +'</div>'
 	   +'<div class="col-sm-4">'
 	    +'<select  class="form-control selectConf marginBottom" id="shearRein" " style="height:auto;margin-bottom:5px; " >'
@@ -216,12 +218,13 @@ var htm=''
 	   
 	   + '<div class="row">'
 	   +'<div class="col-sm-6">'
-	   +'<label class="labelstyle marginBottom">Enter nominal cover (mm) :  </label>'
+	   +'<label class="labelstyle marginBottom">Enter the value of nominal cover <label style="color:#8f0831;">(mm) </label>:  </label>'
 	   +'</div>'
-	   +'<div class="col-sm-4">'
-	   +'<input type="number"  style= "width:100%;"  class=" form-control" id="nominalCover">'
+	   +'<div class="col-sm-3">'
+	   +'<input type="number"  style= "width:100%;"  class=" form-control" id="nominalCover" >'
 	   +'</div>'
-	   +'<div class="col-sm-2">'
+	    +'<div class="col-sm-3">'
+	   +'<button type="button"   class="btn btn-info btnStyle" id="refer" data-toggle="modal" data-target="#myModal1" >Reference</button>'
 	   +'</div>'
 	   +'</div>'
 	   
@@ -231,6 +234,7 @@ var htm=''
 	   +'<div class="col-sm-6">'
 	   +'<label class="labelstyle marginBottom" style="margin-bottom:-50px;">Refer IS456:2000<br> Table 16 and 16A</label>'
 	   +'</div>'
+	  
 	   +'</div>'	   
 	   
 //	    +'<div class="col-sm-12">'
@@ -240,7 +244,57 @@ var htm=''
 	   
 	
     $("#page1Div2").html(htm);
-	
+	 $(".next").click(function(){console.log("clicked")});
+   $(".next").prop("disabled",true);
+   
+   $("#nominalCover").click(function(){
+	toastr.warning('Enter nominal cover value between 20 to 70 mm');
+});
+   
+   $("#nominalCover").change(function(){
+		beamSpanVal = $("#beamSpan").val();
+		lenghtBeam = beamSpanVal;
+		loadOnBeamVal = $("#loadOnBeam").val();
+		loadMagVal = $("#loadMag").val();
+		beamWidthVal = $("#beamWidth").val();
+		w1WidthVal = $("#w1Width").val();
+		w2WidthVal = $("#w2Width").val();
+		nominalCoverVal = $("#nominalCover").val();
+		
+		if(beamSpanVal==""||conVal==0||steelVal==0||loadOnBeamVal==0||loadMagVal==""||
+		beamWidthVal==0||w1WidthVal==""||w2WidthVal==""||longReinVal==0||
+		shearReinVal==0||nominalCoverVal==""){
+           toastr.warning('Enter Appropraite Values');
+		}else{
+		nominalCoverVal = parseFloat($("#nominalCover").val());
+		w1WidthVal = parseFloat($("#w1Width").val());
+		w2WidthVal = parseFloat($("#w2Width").val());
+		
+		if(nominalCoverVal<20||nominalCoverVal>70){
+					toastr.warning('Enter nominal cover value between 20 to 70 mm');
+				}else if(w1WidthVal<0.23||w1WidthVal>2||w2WidthVal<0.23||w2WidthVal>2){
+					toastr.warning('Enter Value of w1 and w2 between 0.23m to 2m');
+				}else if(beamSpanVal<0||loadMagVal<0||beamWidthVal<0)	
+				   {
+					toastr.warning('Enter Appropriate Values');
+			    }else{
+				
+		beamSpanVal = parseFloat($("#beamSpan").val());
+		lenghtBeam = beamSpanVal;
+		loadOnBeamVal = parseFloat($("#loadOnBeam").val());
+		loadMagVal = parseFloat($("#loadMag").val());
+		beamWidthVal = parseFloat($("#beamWidth").val());
+		
+		
+				
+				$('#forwardButton').removeClass("disabled");
+//            $('#backwardButton').prop("hidden",false);
+//					$(".next").prop("disabled",false);	
+           }
+           }		
+		
+	})
+   
    
     $("#concreteGrade").change(function(){
 	
@@ -299,7 +353,7 @@ var htm=''
 	$("#longRein").change(function(){
 //		$("#page1Div1").html('');
 		longReinVal = $("#longRein").val();
-		ren();	
+//		ren();	
 //		change();
 //		getValuesEntered();
 //		updateBeamSpanVal();
@@ -307,9 +361,11 @@ var htm=''
 //		updateValW1();
 //		updateValW2();
 	});
-	
+//	longReinVal=12;
+//	shearReinVal = 8;
 	$("#shearRein").change(function(){
-		shearReinVal = $("#shearRein").val();
+		
+//		shearReinVal = $("#shearRein").val();
 	});
 	
 	$("#nominalCover").click(function(){
@@ -317,71 +373,93 @@ var htm=''
 		$("#blink2").prop("hidden",false);
 	});
 
+
+     $("#w1Width").click(function(){
+	   toastr.warning('Enter Value of w1 between 0.23m to 2m');
+});
+
+      $("#w2Width").click(function(){
+	   toastr.warning('Enter Value of w2 between 0.23m to 2m');
+});
+
+   $("#refer").click(function(){
+	var ht = '<iframe src="images/plain-and-reinforced-concrete.pdf#page=48"  width="100%;" height="600px;" ></iframe>'
+	$("#MsgModal1").html(ht);
+});
 	
 	function nextLevel2(){
-		beamSpanVal = $("#beamSpan").val();
-		lenghtBeam = beamSpanVal;
-		loadOnBeamVal = $("#loadOnBeam").val();
-		loadMagVal = $("#loadMag").val();
-		beamWidthVal = $("#beamWidth").val();
-		w1WidthVal = $("#w1Width").val();
-		w2WidthVal = $("#w2Width").val();
-		nominalCoverVal = $("#nominalCover").val();
-		
-		
-			
-		
-			if(beamSpanVal==""||conVal==0||steelVal==0||loadOnBeamVal==0||loadMagVal==""||beamWidthVal==0||w1WidthVal==""||w2WidthVal==""||longReinVal==0||shearReinVal==0||nominalCoverVal==""){
-//				 $(".modal-header").html("Error Message");
-//			$(".modal-header").css("background","#9c1203b0");
-//			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
-//			$("#MsgModal").html("Enter Appropraite Values");
+	
+	if(beamSpanVal==""||conVal==0||steelVal==0||loadOnBeamVal==0||loadMagVal==""||
+		beamWidthVal==0||w1WidthVal==""||w2WidthVal==""||longReinVal==0||
+		shearReinVal==0||nominalCoverVal==""){
            toastr.warning('Enter Appropraite Values');
-			}else{
+		}else{
+		nominalCoverVal = parseFloat($("#nominalCover").val());
+		w1WidthVal = parseFloat($("#w1Width").val());
+		w2WidthVal = parseFloat($("#w2Width").val());
+		
+		if(nominalCoverVal<20||nominalCoverVal>70){
+					toastr.warning('Enter nominal cover value between 20 to 70 mm');
+				}else if(w1WidthVal<0.23||w1WidthVal>2||w2WidthVal<0.23||w2WidthVal>2){
+					toastr.warning('Enter Value of w1 and w2 between 0.23m to 2m');
+				}else if(beamSpanVal<0||loadMagVal<0||beamWidthVal<0)	
+				   {
+					toastr.warning('Enter Appropriate Values');
+			    }else{
 				
 		beamSpanVal = parseFloat($("#beamSpan").val());
 		lenghtBeam = beamSpanVal;
 		loadOnBeamVal = parseFloat($("#loadOnBeam").val());
 		loadMagVal = parseFloat($("#loadMag").val());
 		beamWidthVal = parseFloat($("#beamWidth").val());
-		w1WidthVal = parseFloat($("#w1Width").val());
-		w2WidthVal = parseFloat($("#w2Width").val());
-		nominalCoverVal = parseFloat($("#nominalCover").val());
+		
+		
 				
-				if(nominalCoverVal<20||nominalCoverVal>70){
-					toastr.warning('Enter nominal cover value between 20 to 70 mm');
-//					 $(".modal-header").html("Error Message");
-//			$(".modal-header").css("background","#9c1203b0");
-//			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
-//			$("#MsgModal").html("Enter nominal cover value between 20 to 70 mm");
-				}else if(w1WidthVal<0.23||w1WidthVal>2){
-					toastr.warning('Enter Value of w1 between 0.23m to 2m');
-				}else if(w1WidthVal<0.23||w1WidthVal>2){
-					toastr.warning('Enter Value of w1 between 0.23m to 2m');
-				}else if(beamSpanVal<0||loadMagVal<0||beamWidthVal<0)	
-				   {
-					toastr.warning('Enter Appropriate Values');
-//				$("#checkConfg").prop("hidden",true);
-//				$("#nextLevelForConfig").prop("hidden",false);				
-			    }else{
-//			divFlg = 1;
+				$('#forwardButton').removeClass("disabled");
+//				 $(".next").prop("disabled",false);
 			getValuesEntered();
 			$("#blink2").prop("hidden",true);
+//            $('#backwardButton').prop("hidden",false);
+//					$(".next").prop("disabled",false);	
+
+            $("#page1,#page3,#page4").prop("hidden",true);
 			
-			$("#btnModal").removeClass("btn-danger").addClass("btn-success");
-	        $(".modal-header").html("Success Message");
-            $(".modal-header").css("background","#5cb85c");
-			$("#MsgModal").html("Configured Successfully");
-			
-			$("#page1,#page3,#page4,#page5").prop("hidden",true);
 			$("#page2").prop("hidden",false);
+//			$('#forwardButton').addClass("disabled");
 			calculateLength();
+			
+			if(initFlag == true){
+				$(".modal-backdrop").hide();				
+				console.log("click1");
+			$("#submit_load1").click();
+			$("#submit_load2").click();
+			$("#submit_load3").click();
+			$("#submit_load4").click();
+			$("#submit_load5").click();
+			}
+			
+			initFlag = true;
+			
 			SecondPage();
+			$(".modal-backdrop").hide();
+           }
+           }		
+	
+		
+//			divFlg = 1;
+			console.log("welcome");
+         
+			
+//			$("#btnModal").removeClass("btn-danger").addClass("btn-success");
+//	        $(".modal-header").html("Success Message");
+//            $(".modal-header").css("background","#5cb85c");
+//			$("#MsgModal").html("Configured Successfully");
+			
 			
 //			$("#page2Div2").html('');
 //		valuesCon();
-				}
-			}
+//				}
+//			}
 	}
 	
 //	$("#checkConfg").click(function(){

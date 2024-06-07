@@ -4,11 +4,16 @@ var facLoad;
 var shearForce;	
 var bendingMom;
 var effSpanForward;
+MasterJson={};
+var effectCoverEnterVal, facLoadEnterVal,effspanVal,shearForceVal,bendingMomVal;
+var page2Flg = false;
+var reinDiamanicFlg = 0;
 
 function calculateLength(){
+	
 	console.log("length of beam "+lenghtBeam);
 	var htm1= ''
-	              +'<div class = "row">'
+	              +'<div class = "row ">'
 	              +'<div class="col-sm-1">'
                   +'</div>'
                   +'<div class="col-sm-3 marginBottom" id="nomCover">'
@@ -21,7 +26,7 @@ function calculateLength(){
                   +'</div>' 
                   
                   +'<div class="col-sm-3 marginBottom" id="longReinLabel">'
-                  +' <center><label class="labelstyle " > &empty; : '+longReinVal+' (m)</label></center> '
+                  +' <center><label class="labelstyle " > &empty; : '+longReinVal+' (mm)</label></center> '
                   +'</div>'
                   
                   +'<div class="col-sm-2">'
@@ -29,7 +34,7 @@ function calculateLength(){
                   +'</div>' 
                   
                   
-                   +'<div class = "row">'
+                  +'<div class = "row">'
 	              +'<div class="col-sm-1">'
                   +'</div>'
                   +'<div class="col-sm-3 marginBottom" id="shearLabel">'
@@ -45,26 +50,31 @@ function calculateLength(){
                   +'</div>'
                   +'</div>' 
                         
+	   
+	     
+	   +'<div class=" row  " id="eCover">'
+	   +'<div class="col-sm-5">'
+	   +'<label class="labelstyle marginBottom" style="font-size:16px;margin:15px 10px ;">Calculate effective cover d<sup>'+"'"+'</sup>(mm) :  </label>'
+	   +'</div>'
+	   +'<div class="col-sm-3">'
+	   +'<input type="number"  style= "width:100%;margin-top:10px;margin-left:15px;"  class=" form-control" id="text1">'
+	   +'</div>'
+	   +'<div class="col-sm-2">'
+	   +'<button type="submit" class="btn btn-info"  id="refClause1" data-toggle="modal" data-target="#myModal" style="width:100%;margin-top: 10px;" >Refer</input>'
+	   +'</div>'
+	   +'<div class="col-sm-2">'
+	   +'<button type="submit" class="btn btn-danger"  id="submit_load1" data-toggle="modal" data-target="#myModal" style="width:100%;margin-top: 10px;" >Submit</input>'
+	   +'</div>'	    
+	   +'</div>'
+	   
 	   +'<div class = "row">'
 	   +'<div class="col-sm-5">'
        +'</div>'
        +'<div class="col-sm-4">'
-	   +'<span class="highlight" id="refClause" hidden>Refer clause no 22.2</span>'
-	   +'</div>'
-	    +'<div class="col-sm-3">'
-       +'</div>'
-	     +'</div>'
-	     
-	    +'<div class="row" id="eCover">'
-	   +'<div class="col-sm-5">'
-	   +'<label class="labelstyle marginBottom" style="font-size:16px;margin:15px 10px ;">Enter effective cover d<sup>1</sup>(mm) :  </label>'
-	   +'</div>'
-	   +'<div class="col-sm-4">'
-	   +'<input type="number"  style= "width:100%;margin-top:18px;margin-left:15px;"  class=" form-control" id="text1">'
+	   +'<span class="highlight" id="refClause" hidden> Refer IS456:2000 <br> Table 16 and 16A</span>'
 	   +'</div>'
 	   +'<div class="col-sm-3">'
-	   +'<button type="submit" class="btn btn-danger"  id="submit_load1" data-toggle="modal" data-target="#myModal" style="width:100%;margin-top: 16px;" >Submit</input>'
-	   +'</div>'
+       +'</div>'
 	   +'</div>'
 	   
 	               +'<div class="row" id="factoredLoad" hidden>'
@@ -84,13 +94,27 @@ function calculateLength(){
 				   +'<div class="col-sm-5 ">'
 				   +'<label  id="enterLoad"  class="" style="font-size:16px;margin:15px 10px ;">Calculate effective span L<sub>eff</sub> (m):  </label>'
 				   +'</div>'
-				   +'<div class="col-sm-4" id="valueStep1">'
+				   +'<div class="col-sm-3" id="valueStep1">'
 				   +'<input type="number"  value="" id="text3"  style=margin:15px 10px;width:150%;height:50%;" class=" form-control" />'
 				   +'</div>'
-				   +'<div class="col-sm-3"  id="submitStep1">'
+				   +'<div class="col-sm-2">'
+	               +'<button type="submit" class="btn btn-info"  id="refClause11" data-toggle="modal" data-target="#myModal" style="width:100%;margin-top: 10px;" >Refer</input>'
+	               +'</div>'
+				   +'<div class="col-sm-2"  id="submitStep1">'
 				   +'<button type="submit" class="btn btn-danger"  id="submit_load3" data-toggle="modal" data-target="#myModal" style="width:100%;margin-top: 16px;" >Submit</input>'
 				   +'</div>'
 				   +'</div>'
+				   
+                  +'<div class = "row">'
+	   +'<div class="col-sm-5">'
+       +'</div>'
+       +'<div class="col-sm-4">'
+	   +'<span class="highlight" id="refClauseNew" hidden> Refer clause 22.2</span>'
+	   +'</div>'
+	   +'<div class="col-sm-3">'
+       +'</div>'
+	   +'</div>'
+                  
 				   
                    +'<div class="row" id="shearF" hidden>'
 				   +'<div class="col-sm-5 ">'
@@ -106,7 +130,7 @@ function calculateLength(){
 				   
 				   +'<div class="row" id="bendingM" hidden>'
 				   +'<div class="col-sm-5 ">'
-				   +'<label  id="enterLoad"  class="" style="font-size:16px;margin:15px 10px ;">Calculate ultimate Moment M<sub>u</sub> (kNm):  </label>'
+				   +'<label  id="enterLoad"  class="" style="font-size:16px;margin:15px 10px ;">Calculate ultimate Bending moment M<sub>u</sub> (kNm):  </label>'
 				   +'</div>'
 				   +'<div class="col-sm-4" id="valueStep1">'
 				   +'<input type="number"  value="" id="text5"  style=margin:15px 10px;width:150%;height:50%;" class=" form-control" />'
@@ -149,12 +173,24 @@ function calculateLength(){
 //			toastr.error("Refer clause no 22.2");
 		});
 		
+		$("#refClause1").click(function(){
+	var ht = '<iframe src="images/plain-and-reinforced-concrete.pdf#page=48"  width="100%;" height="600px;" ></iframe>'
+	$("#MsgModal").html(ht);
+		});
+		
+		$("#refClause11").click(function(){
+	var ht = '<iframe src="images/plain-and-reinforced-concrete.pdf#page=35"  width="100%;" height="600px;" ></iframe>'
+	$("#MsgModal").html(ht);
+		});
+		
+		
 		$("#submit_load1").click(function(){
-			
+			if($("#text1").val() == '')
+			$("#text1").val(effectCoverEnterVal);
 			effectCoverEnter = $("#text1").val();
 			var conv1 = parseFloat(nominalCoverVal);
 			var conv = conv1.toFixed(2);			
-			
+			effectCoverEnterVal = $("#text1").val();
 			var longDiv1 = longReinVal/2;
 			var longDiv11 = longDiv1.toFixed(2);
 			var longDiv = longDiv11;			
@@ -226,10 +262,12 @@ function calculateLength(){
 		var id1 = 1;
 		
 		$("#submit_load2").click(function(){
+			if($("#text2").val() == '')
+			$("#text2").val(facLoadEnterVal);
 			facLoadEnter = $("#text2").val();
 		    var facLoad1 = loadMagVal*1.5;
 		    facLoad = facLoad1.toFixed(2);
-		    
+		    facLoadEnterVal = $("#text2").val();
 		    if(facLoadEnter == ""){
 			
 			$(".modal-header").html("Error Message");
@@ -289,8 +327,18 @@ function calculateLength(){
 			}
 		});
 		
+		$("#text3").click(function(){
+			$("#refClauseNew").prop("hidden",false);
+			blinker1();
+		})
+		
+		
 		var id2 = 1;
 		$("#submit_load3").click(function(){
+			if($("#text3").val() == '')
+			$("#text3").val(effspanVal);
+			effspanVal = $("#text3").val();
+			
 			effspanEnter = $("#text3").val();
 			var w11Div = (w1WidthVal/2).toFixed(3);
 			w1Div = parseFloat(w11Div);
@@ -319,6 +367,7 @@ function calculateLength(){
 	         $("#text3").prop("disabled",true);
 	         $("#shearF").prop("hidden",false);
 	         $("#page2Div2").html('');
+	         $("#refClauseNew").prop("hidden",true);
 	         leffective();
 				} else if (effspanEnter != effspan) {
 				  $(".modal-header").html("Error Message");
@@ -345,7 +394,9 @@ function calculateLength(){
 	         $("#text3").prop("disabled",true);
 	         $("#shearF").prop("hidden",false);
 	         $("#page2Div2").html('');
+	          $("#refClauseNew").prop("hidden",true);
 	         leffective();
+	         
 				} else {
 					
 			$("#btnModal").removeClass("btn-danger").addClass("btn-success");
@@ -368,6 +419,11 @@ function calculateLength(){
 	var id3 = 1;
 	
  $("#submit_load4").click(function(){
+	
+	if($("#text4").val() == '')
+			$("#text4").val(shearForceVal);
+			shearForceVal = $("#text4").val();
+	
 	var mul = facLoad*effspan;
 	shearForce = (mul/2).toFixed(2);
 	shearForceEnter = $("#text4").val();
@@ -438,7 +494,9 @@ var id4=1;
 
 
 $("#submit_load5").click(function(){
-	
+	if($("#text5").val() == '')
+			$("#text5").val(bendingMomVal);
+			bendingMomVal = $("#text5").val();
 	bendingMomEnter = $("#text5").val();
 	var multi = facLoad*effspan*effspan;
 	var div = multi/8;
@@ -462,10 +520,13 @@ $("#submit_load5").click(function(){
 	         $("#submit_load5").prop("disabled",true);
 	         $("#text5").prop("disabled",true);
 //	         $("#bendingM").prop("hidden",false);
+              
              $("#page2Div2").html('');
+             
 	         bendingMomentFinal();
-//	         $("#next3").prop("hidden",false);
-//	         $("#nextLevel3").prop("hidden",false);
+	          $("#forwardButton").removeClass("disabled");
+             $('#backwardButton').removeClass("disabled");
+
 				} else if (bendingMomEnter != bendingMom) {
 				  $(".modal-header").html("Error Message");
 			$(".modal-header").css("background","#9c1203b0");
@@ -490,10 +551,13 @@ $("#submit_load5").click(function(){
 				 $("#submit_load5").prop("disabled",true);
 	         $("#text5").prop("disabled",true);
 //	         $("#bendingM").prop("hidden",false);
+              
              $("#page2Div2").html('');
+            
 	         bendingMomentFinal();
-//	         $("#next3").prop("hidden",false);
-//	         $("#nextLevel3").prop("hidden",false);
+	         $("#forwardButton").removeClass("disabled");
+             $('#backwardButton').removeClass("disabled");
+
 				} else {
 					
 			$("#btnModal").removeClass("btn-danger").addClass("btn-success");
@@ -509,25 +573,43 @@ $("#submit_load5").click(function(){
 	
 });
 
-
-//   $("#next3").click(function(){
-//	$("#page1,#page2,#page4,#page5").prop("hidden",true);
-//	$("#page3").prop("hidden",false);
-//	console.log("bending Moment"+bendingMom);
-//	console.log("effectCover"+effectCover);
-//	console.log("effspan"+effspan);	
-//	Dcalculate();
-//});    
+  
 
 }
 
+
+
 function nextGraphLevel(){
-	$("#page1,#page2,#page4,#page5").prop("hidden",true);
+	
 	$("#page3").prop("hidden",false);
 	console.log("bending Moment"+bendingMom);
 	console.log("effectCover"+effectCover);
 	console.log("effspan"+effspan);	
+	
+	var tempJson = {};
+	 tempJson.effectCover =effectCover;
+    tempJson.facLoad = facLoad;
+    MasterJson.page2 = tempJson;
+	console.log(MasterJson);
+	
+	$("#eCover").prop("hidden",false);
+	$("#factoredLoad").prop("hidden",false);
+	
+//     $("#text1").prop("disabled",true);
+//	 $("#text2").prop("disabled",true);	
+	
+	 $("#text1").val(MasterJson.page2.effectCover);
+	 $("#text2").val(MasterJson.page2.facLoad);
+	 $("#forwardButton").addClass("disabled");
+     $('#backwardButton').addClass("disabled");  
 	Dcalculate();
+	if(page2Flg == true){
+			$("#submit_load6").click();
+			$("#submit_load7").click();
+			$("#submit_load8").click();
+			}
+			
+			page2Flg = true;
 }
 
 
@@ -536,6 +618,12 @@ function blinker1()
     if(document.getElementById("refClause"))
     {
 	    var g = document.getElementById("refClause") ;		
+        g.style.color= (g.style.color=='red'?'blue':'red');		
+        
+    } 
+    if(document.getElementById("refClauseNew"))
+    {
+	    var g = document.getElementById("refClauseNew") ;		
         g.style.color= (g.style.color=='red'?'blue':'red');		
         
     } 

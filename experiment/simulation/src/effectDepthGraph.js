@@ -7,8 +7,13 @@ arrGraphStore = [];
 var minCriteria = 0;
 var maxCriteria = 0;
 var pressureValue;
+var dValRepeat,overDepthValRepeat,astValRepeat;
 
+steelStr = 0.133;
 function Dcalculate(){
+	
+	
+	
 //	var bendingMom=10;
 //	var effectCover = 30;
     console.log("bending Moment"+bendingMom);
@@ -16,12 +21,12 @@ function Dcalculate(){
 	var dCalculate = ''
 	              +'<div class = "row">'
                   +'<div class="col-sm-6 marginBottom" id="steelGradeLabel">'
-                  +' <center><label class="labelstyle " style="margin-left:10px;">(For Fe'+steelVal+')  M<sub>u</sub> = '+steelStr+' f<sub>ck</sub> bd<sup>2</sup> </label></center> '
+                  +' <center><label class="labelstyle " style="margin-left:10px;">Utilmate moment carrying capacity of a balanced section <br>(For Fe'+steelVal+')  M<sub>u</sub> = '+steelStr+' f<sub>ck</sub> bd<sup>2</sup> </label></center> '
                   +'</div>'
 //                   +'<div class="col-sm-1">'
 //                  +'</div>'
                   +'<div class="col-sm-5 marginBottom" id="widthLabel">'
-                  +' <center><label class="labelstyle " style="margin-left:10px;">Width (b): '+beamWidthVal+' mm </label></center> '
+                  +' <center><label class="labelstyle " style="margin-left:10px;">Width (b) = '+beamWidthVal+' mm </label></center> '
                   +'</div>' 
                   +'<div class="col-sm-1">'
                   +'</div>'
@@ -34,7 +39,7 @@ function Dcalculate(){
 //                  +'<div class="col-sm-1">'
 //                  +'</div>'
                   +'<div class="col-sm-5 marginBottom" id="concreteGradeLabel">'
-                  +' <center><label class="labelstyle " >f<sub>ck</sub>: '+conVal+' Mpa </label></center> '
+                  +' <center><label class="labelstyle " >f<sub>ck</sub> = '+conVal+' Mpa </label></center> '
                   +'</div>' 
                   +'<div class="col-sm-1">'
                   +'</div>'
@@ -44,16 +49,16 @@ function Dcalculate(){
                   +'<div class="col-sm-1">'
                   +'</div>'
                   +'<div class="col-sm-3 marginBottom" id="longLabel">'
-                  +' <center><label class="labelstyle " > &empty; : '+longReinVal+' mm  </label></center> '
+                  +' <center><label class="labelstyle " > &empty; = '+longReinVal+' mm  </label></center> '
                   +'</div>'
 //                  +'<div class="col-sm-1">'
 //                  +'</div>'
                   +'<div class="col-sm-3 marginBottom" id="shearLabel">'
-                  +' <center><label class="labelstyle " >&empty;<sub>s</sub> '+shearReinVal+' mm </label></center> '
+                  +' <center><label class="labelstyle " >&empty;<sub>s</sub> = '+shearReinVal+' mm </label></center> '
                   +'</div>' 
                   
                   +'<div class="col-sm-3 marginBottom" id="nominalCLabel">'
-                  +' <center><label class="labelstyle " >cc : '+nominalCoverVal+' mm </label></center> '
+                  +' <center><label class="labelstyle " >cc = '+nominalCoverVal+' mm </label></center> '
                   +'</div>'
                   
                   +'<div class="col-sm-1">'
@@ -75,7 +80,7 @@ function Dcalculate(){
                    
                    +'<div class="row" id="overAllDepth" hidden>'
 				   +'<div class="col-sm-5 ">'
-				   +'<label  id="enterLoad"  class="" style="font-size:16px;margin:15px 10px ;">Provide Overall depth (D) mm :  </label>'
+				   +'<label  id="enterLoad"  class="" style="font-size:16px;margin:15px 10px ;">Calculate Overall depth (D) mm :  </label>'
 				   +'</div>'
 				   +'<div class="col-sm-4" id="valueStep1">'
 				   +'<input type="number"  value="" id="text7"  style=margin:15px 10px;width:150%;height:50%;" class=" form-control" />'
@@ -87,7 +92,7 @@ function Dcalculate(){
 				   
 				   +'<div class="row" id="astBlock" hidden>'
 				   +'<div class="col-sm-5 ">'
-				   +'<label  id="enterLoad"  class="" style="font-size:16px;margin:15px 10px ;">Calculate Ast for balanced section (mm<sup>2</sup>):  </label>'
+				   +'<label  id="enterLoad"  class="" style="font-size:16px;margin:15px 10px ;">Calculate area of tension reinforcement (Ast) for balanced section (mm<sup>2</sup>):  </label>'
 				   +'</div>'
 				   +'<div class="col-sm-4" id="valueStep1">'
 				   +'<input type="number"  value="" id="text8"  style=margin:15px 10px;width:150%;height:50%;" class=" form-control" />'
@@ -99,7 +104,7 @@ function Dcalculate(){
 				   
 				   +'<div class="row" id="overAllDepthSelect" hidden>'
 				   +'<div class="col-sm-5 ">'
-				   +'<label  id="enterLoad"  class="" style="font-size:16px;margin:15px 10px ;">Provide total depth D :  </label>'
+				   +'<label  id="enterLoad"  class="" style="font-size:16px;margin:15px 10px ;">Trial for different values of total depth (D) mm :  </label>'
 				   +'</div>'
 				   +'<div class="col-sm-4" id="valueStep1">'
 				   +'<select  class="form-control selectConf marginBottom"  " style="margin-top: 16px; margin-left:14px; height:auto; " id="selectD">'
@@ -124,13 +129,13 @@ function Dcalculate(){
 				   
 				   +'<div class="row" id="calculatedAst" hidden>'
 				   +'<div class="col-sm-5 ">'
-				   +'<label  id="enterLoad"  class="" style="font-size:16px;margin:15px 10px ;">Required AST :  </label>'
+				   +'<label  id="enterLoad"  class="" style="font-size:16px;margin:15px 10px ;">Required Ast for selected D mm<sup>2</sup>:  </label>'
 				   +'</div>'
 				   +'<div class="col-sm-4" id="valueStep1">'
 				   +'<input type="number"  value="" id="text9"  style=margin:15px 10px;width:150%;height:50%;" class=" form-control" disabled></input>'
 				   +'</div>'
 				   +'<div class="col-sm-3"  id="submitStep1">'
-				   +'<button type="submit" class="btn btn-danger"  id="submit_load10" data-toggle="modal" data-target="#myModal" style="width:100%;height:50%;margin-top: 16px;" >Plot Graph</input>'
+				   +'<button type="submit" class="btn btn-danger"  id="submit_load10" style="width:100%;height:50%;margin-top: 16px;" >Plot Graph</input>'
 				   +'</div>'
 				   +'</div>'
 				   
@@ -138,7 +143,7 @@ function Dcalculate(){
 				   +'<div class="col-sm-1">'
 				   +'</div>' 
 				    +'<div class="col-sm-10" id="lessThan470" hidden>'
-				   	+'<label class="labelstyle marginBottom" style="margin-top:5px; margin-left:-15px;">Over reinforced section.<br> At failure, strain in steel < strain in concrete <br> (Comressive failure)<br>(Increase the depth or go for doubly reinforced section)</label>'
+				   	+'<label class="labelstyle marginBottom" style="margin-top:5px; margin-left:-15px;">Selected depth is less than calculated depth for balanced section.<br>Hence, it is Over reinforced section.<br>Over reinforced section subjected to compressive failure(Sudden failure).<br>Generally, we avoid over reinforced sections; however, if necessary, you may proceed with a design of doubly reinforced section.</label>'
 			        +'</div>' 
                    +'<div class="col-sm-1">'
 				   +'</div>'
@@ -148,7 +153,7 @@ function Dcalculate(){
 				   +'<div class="col-sm-1">'
 				   +'</div>' 
 				    +'<div class="col-sm-10" id="greaterThan470" hidden>'
-				   	+'<label class="labelstyle marginBottom" style="margin-top:5px; margin-left:-15px;">Under reinforced section.<br> At failure, strain in steel > strain in concrete <br> (Tensile failure)<br>(Most preffered)</label>'
+				   	+'<label class="labelstyle marginBottom" style="margin-top:5px; margin-left:-15px;">Selected depth is greater than calculated depth for balanced section.<br>Hence, it is Under reinforced section.<br>Under reinforced section subjected to tensile failure.<br>Generally, we prefer under reinforced sections because they provide visible indications of cracking before failure occurs.</label>'
 			        +'</div>' 
                    +'<div class="col-sm-1">'
 				   +'</div>'
@@ -166,14 +171,19 @@ function Dcalculate(){
 	                         
 	   
 	   $("#page3Div1").html(dCalculate);
-	   
-	   var imgeffectiveD = '<img src="images/rein.png " style="width: 100%;"  class="img-fluid" >'
-            $("#page3Div2").html(imgeffectiveD);
+	   staticDiag();
+//	   var imgeffectiveD = '<img src="images/rein.png " style="width: 100%;"  class="img-fluid" >'
+//            $("#page3Div2").html(imgeffectiveD);
 	   
 	   var dValEnter;
 	   var id5=1;
 	   var modelImg1;
 	   $("#submit_load6").click(function(){
+		
+		if($("#text6").val() == '')
+			$("#text6").val(dValRepeat);
+			dValRepeat = $("#text6").val();
+           
 		
 		dValEnter = $("#text6").val();
 		
@@ -203,6 +213,9 @@ function Dcalculate(){
 	         $("#submit_load6").prop("disabled",true);
 	         $("#text6").prop("disabled",true);
 	         $("#overAllDepth").prop("hidden",false);
+	         $("#page3Div2").html('');
+	         staticDiag();
+	         deffVal();
 	         
 				} else if (dVal != dValEnter) {
 				  $(".modal-header").html("Error Message");
@@ -235,6 +248,9 @@ $("#MsgModal").html(modelImg1);
 			 $("#submit_load6").prop("disabled",true);
 	         $("#text6").prop("disabled",true);
 	         $("#overAllDepth").prop("hidden",false);
+	         $("#page3Div2").html('');
+	         staticDiag();
+	         deffVal();
 				} else {
 					
 			$("#btnModal").removeClass("btn-danger").addClass("btn-success");
@@ -253,6 +269,10 @@ $("#MsgModal").html(modelImg1);
 	var overDepthEnter;
 	var id6=1;
 	$("#submit_load7").click(function(){
+		if($("#text7").val() == '')
+			$("#text7").val(overDepthValRepeat);
+			overDepthValRepeat = $("#text7").val();
+
 		   var div = (longReinVal/2).toFixed(2);
 		   var div1 = parseFloat(div);
 		    overDepthVal = parseFloat(nominalCoverVal)+parseFloat(shearReinVal)+div1+dVal;
@@ -275,7 +295,7 @@ $("#MsgModal").html(modelImg1);
 	         $("#submit_load7").prop("disabled",true);
 	         $("#text7").prop("disabled",true);
 	         $("#astBlock").prop("hidden",false);
-	         
+	         DCalculateVal();
 				} else if (overDepthEnter != overDepthVal) {
 				  $(".modal-header").html("Error Message");
 			$(".modal-header").css("background","#9c1203b0");
@@ -298,7 +318,7 @@ $("#MsgModal").html(modelImg1);
 			 $("#submit_load7").prop("disabled",true);
 	         $("#text7").prop("disabled",true);
 	         $("#astBlock").prop("hidden",false);
-	         
+	          DCalculateVal();
 				} else {
 					
 			$("#btnModal").removeClass("btn-danger").addClass("btn-success");
@@ -316,6 +336,10 @@ $("#MsgModal").html(modelImg1);
 		var astEnter;
 		var id7=1;
 		$("#submit_load8").click(function(){
+			if($("#text8").val() == '')
+			$("#text8").val(astValRepeat);
+			astValRepeat = $("#text8").val();
+			
 			astEnter = $("#text8").val();
 			var mulConver = bendingMom*Math.pow(10,6);
 			var numMul = 4.6*mulConver;
@@ -357,6 +381,8 @@ $("#MsgModal").html(modelImg1);
 	         $("#submit_load8").prop("disabled",true);
 	         $("#text8").prop("disabled",true);
 	         $("#overAllDepthSelect").prop("hidden",false);
+	         $("#forwardButton").removeClass("disabled");
+             $('#backwardButton').removeClass("disabled");
 	         
 				} else if (ast != astEnter) {
 				  $(".modal-header").html("Error Message");
@@ -380,6 +406,8 @@ $("#MsgModal").html(modelImg1);
 			 $("#submit_load8").prop("disabled",true);
 	         $("#text8").prop("disabled",true);
 	         $("#overAllDepthSelect").prop("hidden",false);
+	         $("#forwardButton").removeClass("disabled");
+             $('#backwardButton').removeClass("disabled");
 				} else {
 					
 			$("#btnModal").removeClass("btn-danger").addClass("btn-success");
@@ -492,10 +520,13 @@ $("#MsgModal").html(modelImg1);
 					$("#calculatedAst").prop("hidden",false);
 					$("#selectD").prop("disabled",true);
 					$("#submit_load9").prop("disabled",true);
+					
 					}
 					else if(astCalculated1>maxCriteria){
 						
 						$("#lessThan470").prop("hidden",false);
+						$("#greaterThan470").prop("hidden",true);
+					 $("#calculatedAst").prop("hidden",true);
 						$("#lessThan470").htm("Revise Section");
 						
 					}else{
@@ -506,6 +537,7 @@ $("#MsgModal").html(modelImg1);
 					$("#selectD").prop("disabled",true);
 					$("#submit_load9").prop("disabled",true);
 						console.log("calculate");
+						
 					}
 				}
 				else
@@ -513,7 +545,9 @@ $("#MsgModal").html(modelImg1);
 //					alert("empty");
                  blinker2();
 				$("#lessThan470").prop("hidden",false);
-					
+				$("#greaterThan470").prop("hidden",true);
+					 $("#calculatedAst").prop("hidden",true);
+					 $("#lessThan470").htm("Revise Section");	
 				}
 //				if(astCalculated=="NaN"){
 //					console.log("astCalculatedtemp4"+astCalculatedtemp4);
@@ -578,16 +612,19 @@ $("#MsgModal").html(modelImg1);
 ////			 $("#submit_load9").prop("disabled",true);
 //			 }
 		});
+		
+		
+		
 		 var ast1;
 		$("#submit_load10").click(function(){	
 			ast1 = parseInt(ast)+1000;		
 			 $("#selectD").prop("disabled",false);
 			 $("#submit_load9").prop("disabled",false);
 			 
-			 $(".modal-header").html("Error Message");
-			$(".modal-header").css("background","#23435c");
-			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
-            $("#MsgModal").html("Select another depth D and plot the graph.");
+//			 $(".modal-header").html("Error Message");
+//			$(".modal-header").css("background","#23435c");
+//			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+//            $("#MsgModal").html("Select another depth D and plot the graph.");
 			 
 			 console.log("ast1 : "+ast1);
 			                 tempJson={};
@@ -599,25 +636,13 @@ $("#MsgModal").html(modelImg1);
 							 console.log(graphJson);
 							 $("#page3Div2").html('');
 							 graphCreate(graphJson);
+			 
 //							 graphJson = {};
 //arrGraphStore = [];
+//            $("#page1,#page2,#page3").prop("hidden",true);
+//	         $("#page4").prop("hidden",false);
+//               reinCalulateBar();
 		});
-		
-//		function blinker1()
-//  {
-//    if(document.getElementById("lessThan470"))
-//    {
-//	    var f = document.getElementById("lessThan470") ;		
-//        f.style.color= (f.style.color=='red'?'blue':'red');		
-//        
-//    }if(document.getElementById("greaterThan470")){
-//	var g = document.getElementById("greaterThan470") ;
-//	g.style.color= (g.style.color=='red'?'blue':'red');
-//	
-//    } 
-//	setTimeout('blinker1()', 1000);
-//} 
-		
 
 	function graphCreate(graphJson)
 	{
@@ -711,32 +736,8 @@ $("#MsgModal").html(modelImg1);
 
 		});
 	}	
-	
-	
-	
-	
-//	$("#next4").click(function(){
-	//			$("#page1,#page3,#page2,#page5").prop("hidden",true);
-//			$("#page4").prop("hidden",false);
-//			console.log("effectCover"+effectCover);
-//			console.log("bending Moment"+bendingMom);
-//			console.log("effspan"+effspan);
-//		costCalculate();
-			
 
-//	});	
-	
-//	effCtoCal = effectCover;
 }
-
-function nextPageCost(){
-//			$("#page1,#page3,#page2,#page5").prop("hidden",true);
-//			$("#page4").prop("hidden",false);
-//			console.log("effectCover"+effectCover);
-//			console.log("bending Moment"+bendingMom);
-//			console.log("effspan"+effspan);
-//		costCalculate();
-	}
 
 function blinker2()
   {
