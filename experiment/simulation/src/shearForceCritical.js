@@ -8,6 +8,9 @@ var compArr = [];
 var finalAns;
 var sGradeSelect = 0; 
 var shrForceConvert = 0;
+var fysChange3=0;
+var sGradeSelect3 = 0;
+var fysChange=0;
 
 function shearCalculate(){
 	
@@ -26,8 +29,8 @@ function shearCalculate(){
                   +'<div class="col-sm-4 marginBottom" id="widthLabel">'
                   +' <center><label class="labelstyle " style="margin-left:10px;">Provided D = '+valueD1+' mm </label></center> '
                   +'</div>' 
-//                  +'<div class="col-sm-1">'
-//                  +'</div>'
+                 +'<div class="col-sm-1">'
+                 +'</div>'
                   +'</div>'
                   
                   +'<div class = "row">'
@@ -99,7 +102,7 @@ function shearCalculate(){
 				   +'<input type="number"  value="" id="text16"  style=margin:15px 10px;width:150%;height:50%;" class=" form-control" />'
 				   +'</div>'
 				   +'<div class="col-sm-2"  id="submitStep1">'
-	               +'<button type="submit" class="btn btn-info"  id="refClause11" data-toggle="modal" data-target="#myModal" style="width:100%;margin-top: 15px;" >Refer</input>'
+	               +'<button type="submit" class="btn btn-info"  id="refClause111" data-toggle="modal" data-target="#myModal" style="width:100%;margin-top: 15px;" >Refer</input>'
 				   +'</div>'
 				   +'<div class="col-sm-2"  id="submitStep1">'
 				   +'<button type="submit" class="btn btn-danger"  id="submit_load16" data-toggle="modal" data-target="#myModal" style="width:100%;height:50%;margin-top: 16px;" >Submit</input>'
@@ -528,16 +531,14 @@ function shearCalculate(){
 				console.log("conValArr "+conValArr);
 				var closestPrevious = 0, closestNext = 0, comparePrevious = 0, compareNext = 0;
 	
-	   if (compArr[i] == ptPercent) {
-			finalAns = compArr[i];
-		}else if(ptPercent<=0.15){
+	   if(ptPercent<=0.15){
 			
 			  closestPrevious = conValArr[0];
 	          closestNext = conValArr[0];
 	          comparePrevious = compArr[0];
 	          compareNext = compArr[0];
-	          
-	  var firstTerm = comparePrevious-ptPercent;
+	         if(closestPrevious!=closestNext||comparePrevious!=compareNext){  
+	  var firstTerm = (comparePrevious-ptPercent);
 	 var secondTerm = closestPrevious-closestNext;
 	 var firstFinalMul = firstTerm*secondTerm;
 	 var secondTerm = comparePrevious*closestPrevious;
@@ -548,7 +549,9 @@ function shearCalculate(){
 	 
 	 var division = num/deno;
 	  finalAns = -(division);
-	           
+	    } else {
+	   finalAns = closestPrevious;
+	   }        
 	          
 		}else if(ptPercent>=3){
 			
@@ -556,7 +559,7 @@ function shearCalculate(){
 	          closestNext = conValArr[conValArr.length - 1];
 	          comparePrevious = compArr[conValArr.length - 1];
 	          compareNext = compArr[conValArr.length - 1]; 
-	          
+	        if(closestPrevious!=closestNext||comparePrevious!=compareNext){    
 	           var firstTerm = comparePrevious-ptPercent;
 	 var secondTerm = closestPrevious-closestNext;
 	 var firstFinalMul = firstTerm*secondTerm;
@@ -568,12 +571,15 @@ function shearCalculate(){
 	 
 	 var division = num/deno;
 	  finalAns = -(division);
-	          
+	        } else {
+	   finalAns = closestPrevious;
+	   }   
 			
 		}else{
 				 for (let i = 0; i < compArr.length; i++) {
         let diff = Math.abs(ptPercent - compArr[i]);
-
+       
+   
         if (compArr[i] < ptPercent && (comparePrevious === null || diff < Math.abs(ptPercent - comparePrevious))) {
             closestPrevious = conValArr[i];
             comparePrevious = compArr[i];
@@ -582,11 +588,14 @@ function shearCalculate(){
             closestNext = conValArr[i];
             compareNext = compArr[i];
         }
+        
+        
     }
-    
+    if(closestPrevious!=closestNext||comparePrevious!=compareNext){
+	         
      var firstTerm = comparePrevious-ptPercent;
 	 var secondTerm = closestPrevious-closestNext;
-	 var firstFinalMul = firstTerm*secondTerm;
+	 var firstFinalMul = parseFloat(firstTerm)*parseFloat(secondTerm);
 	 var secondTerm = comparePrevious*closestPrevious;
 	 var thirdTerm = compareNext*closestPrevious;
 	 
@@ -595,19 +604,22 @@ function shearCalculate(){
 	 
 	 var division = (num/deno).toFixed(2);
 	  finalAns = -(division);
-    
+   } else {
+	   finalAns = closestPrevious;
+	   }
+        
 }
 
-		console.log("closestPrevious "+closestPrevious);
-	    console.log("closestNext "+closestNext);
-	    console.log("comparePrevious "+comparePrevious);
-	    console.log("compareNext "+compareNext);
-	    
-	    console.log("finalAns "+finalAns);
+//		console.log("closestPrevious "+closestPrevious);
+//	    console.log("closestNext "+closestNext);
+//	    console.log("comparePrevious "+comparePrevious);
+//	    console.log("compareNext "+compareNext);
+//	    
+//	    console.log("finalAns "+finalAns);
 	}
 		
 	
-		$("#refClause11").click(function(){
+		$("#refClause111").click(function(){
 	var ht1 = '<iframe src="images/plain-and-reinforced-concrete.pdf#page=74"  width="100%;" height="600px;" ></iframe>'
 	$("#MsgModal").html(ht1);
 		});
@@ -618,8 +630,8 @@ function shearCalculate(){
 		});
 		
 		$("#refClause112").click(function(){
-			var ht1 = '<iframe src="images/plain-and-reinforced-concrete.pdf#page=74"  width="100%;" height="600px;" ></iframe>'
-	        $("#MsgModal").html(ht1);
+			var ht2 = '<iframe src="images/plain-and-reinforced-concrete.pdf#page=74"  width="100%;" height="600px;" ></iframe>'
+	        $("#MsgModal").html(ht2);
 		});
 		
 		
@@ -729,7 +741,7 @@ function shearCalculate(){
 
 
 
-var fysChange=0;
+
 $("#longReinForD2").change(function(){
    	fysChange = $("#longReinForD2").val(); 
 });
@@ -771,18 +783,21 @@ $("#submit_load19").click(function(){
 		$("#submit_load19").prop("disabled",true);
 		$("#sGradeVal").prop("disabled",true);
 		asvCalculate();
-	$("#divRelTemp").html('<center><label style=" margin-left: 10px;font-size: x-large; font-style: italic; font-weight: bold; margin-top:5px;" id = "relTempMsgCond1">Provide 2 legged stirrups of '+fysChange+' mm &empty;<sub>s</sub> @ '+condArr[0]+' mm c/c</label></center>');
+	$("#divRelTemp").html('<center><label style=" margin-left: 10px;font-size: x-large; font-style: italic; font-weight: bold; margin-top:5px;" id = "relTempMsgCond1">Provide 2 legged stirrups of '+fysChange+' mm &empty;<sub>s</sub> @ '+(roundDownToNearestFive(condArr[0]))+' mm c/c</label></center>');
 
 	}
 });
 
-var fysChange3=0;
+
 $("#longReinForD22").change(function(){
    	fysChange3 = $("#longReinForD22").val(); 
 });
 
+
+
 $("#submit_load20").click(function(){
 	fysChange3 = parseInt($("#longReinForD22").val());
+//	console.log(" fysChange3 critical: "+fysChange3);
 	if(fysChange3==0){
 		    $(".modal-header").html("Error Message");
 			$(".modal-header").css("background","#9c1203b0");
@@ -795,13 +810,15 @@ $("#submit_load20").click(function(){
 	} 
 });
 
-var sGradeSelect3;
+
 $("#sGradeVal3").change(function(){
 	sGradeSelect3 = $("#sGradeVal3").val();
+	 
 });
 
 $("#submit_load21").click(function(){
 	sGradeSelect3 = parseInt($("#sGradeVal3").val());
+//	console.log(" sGradeSelect3 critical: "+sGradeSelect3);
 	if(sGradeSelect3==0){
 		    $(".modal-header").html("Error Message");
 			$(".modal-header").css("background","#9c1203b0");
@@ -840,7 +857,7 @@ $("#submit_load22").click(function(){
                      $("#text18").prop("disabled",true);
                      $("#divRelTemp1").prop("hidden",false);
                      svCalculateCond3();
-             	$("#divRelTemp1").html('<center><label style=" margin-left: 10px;font-size: x-large; font-style: italic; font-weight: bold; margin-top:5px;" id = "relTempMsgCond1">Provide 2 legged stirrups of '+fysChange3+' mm &empty;<sub>s</sub> @ '+condArr3[0]+' mm c/c</label></center>');
+             	$("#divRelTemp1").html('<center><label style=" margin-left: 10px;font-size: x-large; font-style: italic; font-weight: bold; margin-top:5px;" id = "relTempMsgCond1">Provide 2 legged stirrups of '+fysChange3+' mm &empty;<sub>s</sub> @ '+(roundDownToNearestFive(condArr[0]))+' mm c/c</label></center>');
 
 				} else if (vcVal != vcValEnter) {
 				  $(".modal-header").html("Error Message");
@@ -864,7 +881,7 @@ $("#submit_load22").click(function(){
                      $("#text18").prop("disabled",true);
 	        $("#divRelTemp1").prop("hidden",false);
 	        svCalculateCond3();
-             	$("#divRelTemp1").html('<center><label style=" margin-left: 10px;font-size: x-large; font-style: italic; font-weight: bold; margin-top:5px;" id = "relTempMsgCond1">Provide 2 legged stirrups of '+fysChange3+' mm &empty;<sub>s</sub> @ '+condArr3[0]+' mm c/c</label></center>');
+             	$("#divRelTemp1").html('<center><label style=" margin-left: 10px;font-size: x-large; font-style: italic; font-weight: bold; margin-top:5px;" id = "relTempMsgCond1">Provide 2 legged stirrups of '+fysChange3+' mm &empty;<sub>s</sub> @ '+(roundDownToNearestFive(condArr[0]))+' mm c/c</label></center>');
         
 				} else {
 					
@@ -910,8 +927,8 @@ $("#submit_load22").click(function(){
 		console.log("Before sorting : "+condArr);
 		condArr.sort(compareNumbers);
 		console.log("sorted array is : "+condArr);
-
-		
+        console.log("condArr"+condArr[0]);
+		console.log(roundDownToNearestFive(condArr[0]));
 	}
 	
 	function compareNumbers(a, b) {
@@ -941,12 +958,15 @@ $("#submit_load22").click(function(){
 		console.log("Before sorting : "+condArr3);
 		condArr3.sort(compareNumbers);
 		console.log("sorted array is : "+condArr3);
-		
+		 console.log("condArr"+condArr[0]);
+		console.log(roundDownToNearestFive(condArr[0]));
 		
 	}
 }
 
-
+function roundDownToNearestFive(num) {
+    return Math.floor(num / 5) * 5;
+}
 
 
 function blinkerShear()
