@@ -27,3 +27,5 @@
 - Provide 2 legged stirrups and select Grade of steel for stirrups you will get the spacing.
 
 
+### Economical:
+- Select the garde of steel and concrete and enter its cost. Observe the cost for different values of D.
