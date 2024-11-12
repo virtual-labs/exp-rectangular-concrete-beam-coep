@@ -61,7 +61,8 @@ hr.new3 {
 #labelSelected,#shearFactor,#factorLoad,#bendingMoment,#shearFactorReaction,#effectiveDepth,#effectiveSpan,#diaBar,#diaFors,#clearC
 ,#overAllDepth,#astBlock,#eCover,#factoredLoad,#shearF,#bendingM,#overAllDepthSelect,#calculatedAst,#overAllDepthSelectSecond,#steelGrade2,#inputsteelRate
 ,#concreteGrade2,#inputconcreteRate,#overAllDepthSelect1,#calculatedAst1,#noOfBars,#sizeOfBars,#barNos,#sForceCritical,#sForceStress,#sForceStrength,#sMaxShearStress
-,#deffCalculate1,#condition1,#steelGradeStirrups,#steelGradeStirrups3,#vcCalculate,#condition2
+,#deffCalculate1,#condition1,#steelGradeStirrups,#steelGradeStirrups3,#vcCalculate,#condition2,#gsLongRein,#gsLongStirrup
+,#gsConcrete
 {
 			background-color:#7dafad80;
 /* 			#b4e4e280; */

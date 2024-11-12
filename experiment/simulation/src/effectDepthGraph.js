@@ -9,6 +9,10 @@ var maxCriteria = 0;
 var pressureValue;
 var dValRepeat,overDepthValRepeat,astValRepeat;
 
+
+var valMainArr = [];
+var graphArr11 = [];
+
 steelStr = 0.133;
 function Dcalculate(){
 	
@@ -427,9 +431,15 @@ $("#MsgModal").html(modelImg1);
 		
 		var ValueD;
 		$("#selectD").change(function(){
-			ValueD = $("#selectD").val();
+			ValueD = parseInt($("#selectD").val());
+			$("#calculatedAst").prop("hidden",true);
+			$("#lessThan470").prop("hidden",true);
+			$("#greaterThan470").prop("hidden",true);
 //			$("#next4").prop("hidden",false);
 		});
+		
+		
+		
 		
 		$("#submit_load9").click(function(){
 			console.log("ValueD : "+ValueD);
@@ -490,17 +500,8 @@ $("#MsgModal").html(modelImg1);
 			$("#MsgModal").html("Select Appropraite Values");
 				
 			}else{
-//				if(overDepthVal>ValueD1)
-//				{
-//					console.log("message over");
-//				}
-//				else
-//				{
-//					console.log("else 1");
-//				}
-				
-				
-				
+
+				valMainArr.push(ValueD1);
 				
 				
 				if(overDepthVal<ValueD1)
@@ -544,83 +545,25 @@ $("#MsgModal").html(modelImg1);
 				{
 //					alert("empty");
                  blinker2();
-				$("#lessThan470").prop("hidden",false);
+                 $("#lessThan470").prop("hidden",false);
+//                 $("#lessThan470").htm("Revise Section");
+				
 				$("#greaterThan470").prop("hidden",true);
-					 $("#calculatedAst").prop("hidden",true);
-					 $("#lessThan470").htm("Revise Section");	
+				$("#calculatedAst").prop("hidden",true);
+					
 				}
-//				if(astCalculated=="NaN"){
-//					console.log("astCalculatedtemp4"+astCalculatedtemp4);
-//				}else if(overDepthVal<ValueD1)	
-//				    {
-//					console.log("overDepthValtemp3<ValueDtemp5");
-//				}else if(astCalculated1<minCriteria){
-//					console.log("astCalculated1<minCriteria");
-//				}else if(astCalculated1> maxCriteria){
-//					console.log("astCalculated1 > maxCriteria");
-//				}else{
-//					console.log("remaining");
-//				}
+
 			}
-//				if(astCalculatedtemp4=="NaN"){					
-////					blinker1();
-//					$("#lessThan470").prop("hidden",false);
-//					$("#calculatedAst").prop("hidden",true);
-////					var overDepthVal1 = parseFloat(overDepthVal);
-////					var selectD1 = parseFloat(selectD1);
-////					var ValueD1 = parseFloat(ValueD);
-////					console.log("selectD1"+selectD1);
-////					console.log("ValueD1"+ValueD1);
-////					console.log("overDepthVal1"+overDepthVal1);
-//				}else if(overDepthValtemp3 < ValueDtemp5){
-//					
-////					overDepthVal
-////					blinker1();
-//                    console.log("first condition");
-//					$("#lessThan470").prop("hidden",false);
-//					$("#calculatedAst").prop("hidden",true);
-//					$("#greaterThan470").prop("hidden",true);
-//				}else 
-//					if(astCalculatedtemp4 < minCriteriatemp2){
-//						
-//						console.log("astCalculated "+astCalculated);
-//						$("#text9").val(minCriteria);
-//						console.log("second condition");
-//						alert("Ast minimum");
-//						$("#greaterThan470").prop("hidden",false);
-//						$("#lessThan470").prop("hidden",true);
-//					}else if(astCalculatedtemp4 > maxCriteriatemp1){
-//						
-//						alert("Calculated Ast exceeding maximum reinforcement criteria, hence revised section");
-//					$("#lessThan470").prop("hidden",true);
-//					$("#greaterThan470").prop("hidden",false);
-//					
-//					}else{
-//						console.log("forth condition");
-//						$("#lessThan470").prop("hidden",true);
-//					$("#greaterThan470").prop("hidden",true);
-//					$("#text9").val(astCalculated);
-//					$("#calculatedAst").prop("hidden",false);
-//					$("#selectD").prop("disabled",true);
-//					$("#submit_load9").prop("disabled",true);
-//					}
-//				
-//				
-////			 $("#text9").val(astCalculated);
-////			 $("#calculatedAst").prop("hidden",false);
-////			 $("#selectD").prop("disabled",true);
-////			 $("#submit_load9").prop("disabled",true);
-//			 }
+
 		});
-		
-		
-		
+	
 		 var ast1;
 		$("#submit_load10").click(function(){	
 			ast1 = parseInt(ast)+1000;		
 			 $("#selectD").prop("disabled",false);
 			 $("#submit_load9").prop("disabled",false);
-			 
+			 graphArr11.push(ast1);
+			
 //			 $(".modal-header").html("Error Message");
 //			$(".modal-header").css("background","#23435c");
 //			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
@@ -628,7 +571,7 @@ $("#MsgModal").html(modelImg1);
 			 
 			 console.log("ast1 : "+ast1);
 			                 tempJson={};
-							 tempJson.selectedD = ValueD;
+							 tempJson.selectedD = parseInt(ValueD);
 							 tempJson.calAst = astCalculated;
 							 arrGraphStore.push(tempJson);
 							 graphJson.astGraph=arrGraphStore;
@@ -644,99 +587,124 @@ $("#MsgModal").html(modelImg1);
 //               reinCalulateBar();
 		});
 
-	function graphCreate(graphJson)
-	{
-//	$("#page3Div2").html('');	
-	var xdata=[];
-	var ydata=[];
-	
-	var graphData1=[];
-	
-	
-	for (var i = 0; i < graphJson.astGraph.length; i++)
-	 {
-		
-		xdata[i] = parseFloat(graphJson.astGraph[i].selectedD);
-		ydata[i] = parseFloat(graphJson.astGraph[i].calAst);
-		
-	}
-	
+}
 
-		console.log("After xdata "+xdata);
-		console.log("After ydata "+ydata);
-	
-	for (var j = 0; j < graphJson.astGraph.length; j++) {
-			tempArr = [];
-			tempArr[0] = xdata[j];
-			tempArr[1] = ydata[j];
-			graphData1.push(tempArr);
+function graphCreate(graphJson) {
+    $("#page3Div2").html('');
+    var xdata = [];
+    var ydata = [];
 
-	}
-		console.log("xdata "+xdata);
-		console.log("ydata "+ydata);
-		console.log("graphData1 "+graphData1);
-		ydata.sort(function(a, b) { return a - b });
-		xdata.sort(function(a, b) { return a - b });
-		console.log("After xdata "+xdata);
-		console.log("After ydata "+ydata);
-		Xmax = parseFloat(xdata[xdata.length - 1]);
-		Ymax = parseFloat(ydata[ydata.length - 1]);
-		console.log("Xmax "+Xmax);
-		console.log("Ymax "+Ymax);
-	
-		Xmin  = parseFloat(xdata[0]);
-		Ymin  = parseFloat(ydata[0]);
+    var graphData1 = [];
+    var graphDataSort = [];
 
-		Highcharts.chart('page3Div2', {
-			title: {
-				text: 'Selected Depth'
-			},
-//			subtitle: {
-//				text: 'Meter Constant is  pulses (per/ltr)'
-//			},
-			xAxis: {
-				min: Xmin,
-				max: Xmax,
-				title: {
-					text: 'Selected D'
-				}
-			},
-			yAxis: {
-				min: Ymin,
-				max: Ymax,
-				title: {
-					text: 'Calculated AST'
-				}
-			},
-			series: [
-//				{
-//					type: 'line',
-//					name: 'Standard value',
-//					data: graphData1,
-//					marker: {
-//						enabled: false
-//					},
-//					states: {
-//						hover: {
-//							lineWidth: 0
-//						}
-//					},
-//					enableMouseTracking: false
-//				},
+    for (var i = 0; i < graphJson.astGraph.length; i++) {
+        xdata[i] = parseInt(graphJson.astGraph[i].selectedD);
+        ydata[i] = parseFloat(graphJson.astGraph[i].calAst);
+    }
 
-				{
-					type: 'scatter',
-					name: 'Observation value',
+    for (var j = 0; j < graphJson.astGraph.length; j++) {
+        let tempArr = [];
+        tempArr[0] = xdata[j];
+        tempArr[1] = ydata[j];
+        graphData1.push(tempArr);
+    }
 
-					data: graphData1,
-					marker: {
-						radius: 4
-					}
-				}]
+    // Custom sort function to place 1000 at the end
+    xdata.sort(function(a, b) {
+        if (a === 1000) return 1;
+        if (b === 1000) return -1;
+        return a - b;
+    });
 
-		});
-	}	
+    // Ensure graphData1 is sorted by the custom sorted xdata
+    graphData1.sort(function(a, b) {
+        if (a[0] === 1000) return 1;
+        if (b[0] === 1000) return -1;
+        return a[0] - b[0];
+    });
 
+    ydata.sort(function(a, b) { return a - b });
+
+    Xmax = parseInt(xdata[xdata.length - 1]);
+    Ymax = parseFloat(ydata[ydata.length - 1]);
+
+    Xmin = parseInt(xdata[0]);
+    Ymin = parseFloat(ydata[0]);
+
+    graphDataSort = graphData1.slice(); // Make a copy of the sorted graph data
+
+    // Determine threshold for higher side (e.g., the top 20% of values)
+    var threshold = ydata[Math.floor(ydata.length * 0.8)];
+
+    Highcharts.chart('page3Div2', {
+        title: {
+            text: 'Selected Depth'
+        },
+
+        xAxis: {
+            min: Xmin,
+            max: Xmax,
+            title: {
+                text: 'Selected D'
+            }
+        },
+        yAxis: {
+            min: Ymin,
+            max: Ymax,
+            title: {
+                text: 'Calculated AST'
+            }
+        },
+        series: [
+            {
+                type: 'line',
+                name: 'Standard value',
+                data: graphDataSort,
+                marker: {
+                    enabled: false
+                },
+                states: {
+                    hover: {
+                        lineWidth: 0
+                    }
+                },
+                enableMouseTracking: false
+            },
+
+            {
+                type: 'scatter',
+                name: 'Observation value',
+                data: graphData1,
+                marker: {
+                    radius: 4
+                },
+                zones: [{
+                    value: threshold,
+                    color: '#7240a1' // Default blue color
+                }, {
+                    color: '#ff0000' // Red color for higher values
+                }]
+            }
+        ]
+    });
+}
+
+
+function sortJsonArrayByKey(array, key) {
+    return array.sort(function(a, b) {
+        var x = a[key]; 
+        var y = b[key];
+
+        // If the key values are numbers, compare them directly
+        if (typeof x === "number" && typeof y === "number") {
+            return x - y;
+        }
+
+        // Otherwise, compare them as strings
+        if (x < y) { return -1; }
+        if (x > y) { return 1; }
+        return 0;
+    });
 }
 
 function blinker2()
