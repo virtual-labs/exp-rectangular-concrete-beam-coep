@@ -1,0 +1,68 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": " What is the primary function of providing reinforcement in a rectangular reinforced concrete beam?",
+      "answers": {
+         "a": "To increase the compressive strength of the beam",
+        "b": "To enhance the beam's aesthetic appeal",
+        "c": "To reduce the weight of the beam",
+        "d": "To resist tensile forces and improve flexural capacity"
+      },
+      
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In a simply supported rectangular RC beam, where is the maximum moment generally located?",
+      "answers": {
+        "a": "At the support  ",
+        "b": "At the midspan  ",
+        "c": "At the point of maximum deflection  ",
+        "d": "At the free end  "
+   
+      },
+     
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What does the depth of the neutral axis represent in a reinforced concrete beam?",
+      "answers": {
+        "a": "Maximum deflection point  ",
+        "b": "Location of zero bending stresses  ",
+        "c": "Size of the beam's cross-section  ",
+        "d": "Maximum tensile stress point  "
+      },
+     
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+	{
+      "question": "When is shear reinforcement required in a rectangular RC beam?",
+      "answers": {
+        "a": "When the beam is excessively deep  ",
+        "b": "When shear stress exceeds the capacity of concrete  ",
+        "c": "When the beam is subjected to pure axial loads  ",
+        "d": "When the beam is long and slender  "
+      },
+     
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+	
+	{
+      "question": "What are the primary failure modes of a rectangular RC beam?",
+      "answers": {
+        "a": "Tensile and compressive failure  ",
+        "b": "Shear and torsional failure  ",
+        "c": "Flexural and shear failure  ",
+        "d": "Bending and axial failure  "
+      },
+     
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    }
+  
+  ]
+}
