@@ -95,7 +95,7 @@ x=50,y=-100;
 //     
 //    var s1 = paper.path("M"+(z-278)+" "+(y+520)+"l 353 0"+"M"+(z-285)+" "+(y+1500)+" A 1 2 0.5 0 1 "+(z+74)+" "+(y+520)).attr({ 'stroke': 'blue', 'stroke-width': 2});
     
-         
+       
      
 }
 
@@ -243,9 +243,9 @@ function leffective(){
         var t2 = paper.text(x+55,y+175,"A").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'}); 
         
      
-    t1 = paper.text(z-100,y+225,"L").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});    
-    t2 = paper.text(z-85,y+227,"eff").attr({'font-weight': 'bold','font-size':'12px','stroke':'red'});
-    t3 = paper.text(z-55,y+227," : "+effspan).attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
+    t1 = paper.text(z-106,y+225,"L").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});    
+    t2 = paper.text(z-93,y+227,"eff").attr({'font-weight': 'bold','font-size':'12px','stroke':'red'});
+    t3 = paper.text(z-50,y+227," :  "+effspan+" m").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
             
           var lin1 = paper.path("M"+(z+75)+" "+(y+225)+"l 0 30"+"M"+(z-278)+" "+(y+225)+"l 0 30").attr({ 'stroke': '#000', 'stroke-width': 2});
             var linB = paper.path("M"+(x+71.5)+" "+(y+175)+"l 353 0").attr({ 'stroke': '#000', 'stroke-width': 2});         
@@ -334,10 +334,10 @@ function shearForceFinal(){
         var t2 = paper.text(x+55,y+175,"A").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'}); 
         
      
-    t1 = paper.text(z-100,y+225,"L").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});    
-    t2 = paper.text(z-85,y+227,"eff").attr({'font-weight': 'bold','font-size':'12px','stroke':'red'});
-    t3 = paper.text(z-55,y+227," : "+effspan).attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
-           
+   t1 = paper.text(z-106,y+225,"L").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});    
+    t2 = paper.text(z-93,y+227,"eff").attr({'font-weight': 'bold','font-size':'12px','stroke':'red'});
+    t3 = paper.text(z-50,y+227," :  "+effspan+" m").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
+              
           var lin1 = paper.path("M"+(z+75)+" "+(y+225)+"l 0 30"+"M"+(z-278)+" "+(y+225)+"l 0 30").attr({ 'stroke': '#000', 'stroke-width': 2});
             var linB = paper.path("M"+(x+71.5)+" "+(y+175)+"l 353 0").attr({ 'stroke': '#000', 'stroke-width': 2});         
 
@@ -399,10 +399,12 @@ function shearForceFinal(){
 //		s11 = parseFloat(shearForce);
 //	}
 	
- 	var s1 = paper.path("M"+(z-278)+" "+(y+310)+"l 0 40"+"M"+(z-278)+" "+(y+310)+"l 353 80 l 0 -40 l -353 0 ").attr({ 'stroke': 'red', 'stroke-width': 2});
+ 	var s1 = paper.path("M"+(z-278)+" "+(y+310)+"l 0 40"+"M"+(z-278)+" "+(y+310)+"l 353 80 l 0 -40 l -353 0 ")
+ 	.attr({ 'stroke': '#fa8282', 'stroke-width': 2,'fill':'#fcd4d4'});
     var txt1 = paper.text(z-330,y+330,shearForce+" kN").attr({'font-weight': 'bold','font-size':'15px','stroke':'#000'});
-    var txt2 = paper.text(z+110,y+368,"-"+shearForce+" kN").attr({'font-weight': 'bold','font-size':'15px','stroke':'#000'});
-	
+    var txt2 = paper.text(z+118,y+371,"-"+shearForce+" kN").attr({'font-weight': 'bold','font-size':'15px','stroke':'#000'});
+	var txt11 = paper.text(z-330,y+310," SFD ").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
+//	 var txt1 = paper.text(z-330,y+430," BMD ").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
 }
 
 var b1;
@@ -410,7 +412,6 @@ function bendingMomentFinal(){
 	
 	$("#page2Div2").html('');
 	
-	console.log("Dhanashree");
 	var x1=100,y1=100;
 	var x=50,y=-50;
 	var z = x+350;
@@ -439,10 +440,10 @@ function bendingMomentFinal(){
         var t2 = paper.text(x+55,y+175,"A").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'}); 
         
      
-    t1 = paper.text(z-100,y+225,"L").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});    
-    t2 = paper.text(z-85,y+227,"eff").attr({'font-weight': 'bold','font-size':'12px','stroke':'red'});
-    t3 = paper.text(z-55,y+227," : "+effspan).attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
-          
+    t1 = paper.text(z-106,y+225,"L").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});    
+    t2 = paper.text(z-93,y+227,"eff").attr({'font-weight': 'bold','font-size':'12px','stroke':'red'});
+    t3 = paper.text(z-50,y+227," :  "+effspan+" m").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
+             
           var lin1 = paper.path("M"+(z+75)+" "+(y+225)+"l 0 30"+"M"+(z-278)+" "+(y+225)+"l 0 30").attr({ 'stroke': '#000', 'stroke-width': 2});
             var linB = paper.path("M"+(x+71.5)+" "+(y+175)+"l 353 0").attr({ 'stroke': '#000', 'stroke-width': 2});         
 
@@ -510,13 +511,22 @@ function bendingMomentFinal(){
 		b1 = parseFloat(bendingMom);
 	}
 	
- 	var s1 = paper.path("M"+(z-278)+" "+(y+310)+"l 0 40"+"M"+(z-278)+" "+(y+310)+"l 353 80 l 0 -40 l -353 0 ").attr({ 'stroke': 'red', 'stroke-width': 2});
-    var txt1 = paper.text(z-330,y+330,shearForce+" kN").attr({'font-weight': 'bold','font-size':'15px','stroke':'#000'});
-    var txt2 = paper.text(z+110,y+368,"-"+shearForce+" kN").attr({'font-weight': 'bold','font-size':'15px','stroke':'#000'});
+	var s1 = paper.path("M"+(z-278)+" "+(y+310)+"l 0 40"+"M"+(z-278)+" "+(y+310)+"l 353 80 l 0 -40 l -353 0 ")
+ 	.attr({ 'stroke': '#fa8282', 'stroke-width': 2,'fill':'#fcd4d4'});
 	
-	var s1 = paper.path("M"+(x1+21)+" "+(y1+348)+"l 355 0"+"M"+(x1+17)+" "+(y1+1355)+" A -1 2 0.5 0 1 "+(x1+374)+" "+(y1+347)).attr({ 'stroke': 'blue', 'stroke-width': 2});
+    var txt1 = paper.text(z-330,y+330,shearForce+" kN").attr({'font-weight': 'bold','font-size':'15px','stroke':'#000'});
+    var txt2 = paper.text(z+118,y+371,"-"+shearForce+" kN").attr({'font-weight': 'bold','font-size':'15px','stroke':'#000'});
+	
+	var s1 = paper.path("M"+(x1+21)+" "+(y1+348)+"l 355 0"+"M"+(x1+17)+" "+(y1+1355)+" A -1 2 0.5 0 1 "+(x1+374)+" "+(y1+347)).attr({ 'stroke': '#64a0ed', 'stroke-width': 2,'fill':'#d0dff2'});
 //	var s1 = paper.path("M"+(z-278)+" "+(y+520)+"l 353 0"+"M"+(z-285)+" "+(y+1500)+" A 1 2 0.5 0 1 "+(z+74)+" "+(y+520)).attr({ 'stroke': 'blue', 'stroke-width': 2});
-    var txt3 = paper.text(z-95,y+372,b1+" kNm").attr({'font-weight': 'bold','font-size':'15px','stroke':'#000'});
+    var txt3 = paper.text(z-95,y+376,b1+" kNm").attr({'font-weight': 'bold','font-size':'15px','stroke':'#000'});
+    var c1 = paper.circle(z-100,y+387,3).attr({'stroke':'#64a0ed','fill':'#64a0ed'});
+    
+    t01 = paper.text(x1+12,y1+345," 0 ").attr({ 'stroke': '#000', 'font-size':'15px'}); 
+    t02 = paper.text(x1+390,y1+345," 0 ").attr({ 'stroke': '#000', 'font-size':'15px'});  
+    
+    var txt11 = paper.text(z-330,y+310," SFD ").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
+	 var txt111 = paper.text(z-330,y+430," BMD ").attr({'font-weight': 'bold','font-size':'15px','stroke':'red'});
 
 }
 

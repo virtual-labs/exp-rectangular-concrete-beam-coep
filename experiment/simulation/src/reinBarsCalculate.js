@@ -189,6 +189,17 @@ function reinCalulateBar(){
 			
 			var mulValues = finalSub*divFirst*beamWidthVal*sub;
 			astCalculatedpage4 = mulValues.toFixed(2);
+			
+			var minCriteriaNum = (0.85*beamWidthVal*valueD1).toFixed(2);
+			var minCriteriaDiv = (minCriteriaNum/steelVal).toFixed(2);
+			minCriteria = parseFloat(minCriteriaDiv);
+			
+			if(astCalculatedpage4 < minCriteria){
+				astCalculatedpage4 = minCriteria;
+			}else{
+				astCalculatedpage4 = astCalculatedpage4;
+			}
+			
 			$("#text12").val(astCalculatedpage4);
 			
 	}

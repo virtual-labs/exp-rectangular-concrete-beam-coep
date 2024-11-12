@@ -235,6 +235,7 @@ var t66 = paper.text(x+270,y+28," ");
 			t4.remove();
 			t5.remove();
 			t66.remove();
+			
 		loadMagVal = $("#loadMag").val();
          t4 = paper.text(x+210,y+28,"w ").attr({'font-weight': 'bold','font-size':'18px','stroke':'#f20515'});
 		 t5 = paper.text(x+220,y+32,"u ").attr({'font-weight': 'bold','font-size':'12px','stroke':'#f20515'});
@@ -262,12 +263,15 @@ var t66 = paper.text(x+270,y+28," ");
 	w2c.remove();
 	wwc.remove();
 	
-    w2WidthVal = $("#w2Width").val();
+    w2WidthVal = parseFloat($("#w2Width").val());
 //	w2 = paper.text(x+390,y+270,"w2 : "+w2WidthVal+"m").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'});
 
      w2 = paper.text(x+360,y+270,"w").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'});
 	 w2c = paper.text(x+369,y+274,"2 ").attr({'font-weight': 'bold','font-size':'8px','stroke':'#f20515'});   
 	 wwc = paper.text(x+405,y+270," : "+w2WidthVal+" m").attr({'font-weight': 'bold','font-size':'16px','stroke':'#f20515'});			
+ 
+ 
+     
  
 
 }

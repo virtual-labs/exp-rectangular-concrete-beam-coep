@@ -607,6 +607,18 @@ function nextGraphLevel(){
 			$("#submit_load6").click();
 			$("#submit_load7").click();
 			$("#submit_load8").click();
+			let lastValue = valMainArr[valMainArr.length - 1];
+			$("#selectD").val(lastValue);
+//			$("#selectD").prop("disabled",true);
+//			$("#submit_load9").prop("disabled",true);
+			$("#submit_load9").click();
+			
+			 let finVal = graphArr11[graphArr11.length-1];
+			$("#text9").val(finVal);
+//			$("#calculatedAst").prop("hidden",false);
+//		
+//			$("#submit_load10").click();
+//			
 			}
 			
 			page2Flg = true;
