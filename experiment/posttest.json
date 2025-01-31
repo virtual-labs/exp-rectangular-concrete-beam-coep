@@ -54,7 +54,7 @@
       "question": "In a simply supported rectangular beam, where is the maximum bending moment typically located?",
       "answers": {
         "a": "At the support  ",
-        "b": "At the center  ",
+        "b": "Near the support but not at the center",
         "c": "At midspan  ",
         "d": "At the free end "
       },

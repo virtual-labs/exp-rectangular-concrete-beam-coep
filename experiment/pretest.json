@@ -14,7 +14,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "In a simply supported rectangular RC beam, where is the maximum moment generally located?",
+      "question": "In a simply Supported rectangular RC beam, where is the maximum moment generally located?",
       "answers": {
         "a": "At the support  ",
         "b": "At the midspan  ",
@@ -23,7 +23,7 @@
    
       },
      
-      "correctAnswer": "b",
+      "correctAnswer": "c",
       "difficulty": "beginner"
     },
     {
