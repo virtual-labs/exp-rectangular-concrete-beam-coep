@@ -9,7 +9,7 @@ In any type of structure, the basic structural elements are beams, columns, slab
 
 ### Simply supported beam :
 
-A simply supported beam is one that rests on two supports and is free to move horizontally. Typical practical applications of simply supported beams include bridges, beams in buildings, etc.
+A simply Supported Beam is one that rests on two supports and is free to move horizontally through on of two supports.
 
 ![*beam2*](images/beam2.png)
 
@@ -21,13 +21,14 @@ A cantilever beam is a structural element that extends horizontally and is suppo
 
 ### Fixed Beam :
 
-A fixed beam is one that is fixed on both ends of the beam with supports. This type of beam does not allow for bending moment production and will not have any vertical movement or rotation. Fixed beams are most frequently used in trusses and similar structures.
+A fixed beam is one that is fixed on both ends of the beam with supports. This type of beam produces bending moment at its fixed ends and will not allow any translation (horizontal or vertical movement) or rotation. This type of beam is statically indeterminate.
 
 ![*beam4*](images/beam4.png)
 
 ### Continuous Beam :
 
 A continuous beam, i.e. a beam that has more than two supports, is statically indeterminate. The reactions in the supports of a continuous beam cannot be obtained with the equations of static equilibrium only.
+These types of beams are commonly used in buildings
 
 ![*beam5*](images/beam5.png)
 
@@ -44,7 +45,7 @@ When the end of a beam extends beyond the support, it is referred to as an overh
 
 ##### Under-Reinforced Section:
 - A section having steel percentage less than the critical percentage is known as under reinforced section.
-- Compressive Strain in steel reaches its ultimate value first.
+- Tensile strain in steel reaches its yielding limit first
 - It gives sufficient warning of impending failure.
 
 ##### Over Reinforced Section:
