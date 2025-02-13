@@ -29,8 +29,8 @@ function shearCalculate(){
                   +'<div class="col-sm-4 marginBottom" id="widthLabel">'
                   +' <center><label class="labelstyle " style="margin-left:10px;">Provided D = '+valueD1+' mm </label></center> '
                   +'</div>' 
-                 +'<div class="col-sm-1">'
-                 +'</div>'
+                  +'<div class="col-sm-1">'
+                  +'</div>'
                   +'</div>'
                   
                   +'<div class = "row">'
@@ -102,7 +102,7 @@ function shearCalculate(){
 				   +'<input type="number"  value="" id="text16"  style=margin:15px 10px;width:150%;height:50%;" class=" form-control" />'
 				   +'</div>'
 				   +'<div class="col-sm-2"  id="submitStep1">'
-	               +'<button type="submit" class="btn btn-info"  id="refClause111" data-toggle="modal" data-target="#myModal" style="width:100%;margin-top: 15px;" >Refer</input>'
+	               +'<button type="submit" class="btn btn-info"  id="refClause23" data-toggle="modal" data-target="#myModal1" style="width:100%;margin-top: 15px;" >Refer</input>'
 				   +'</div>'
 				   +'<div class="col-sm-2"  id="submitStep1">'
 				   +'<button type="submit" class="btn btn-danger"  id="submit_load16" data-toggle="modal" data-target="#myModal" style="width:100%;height:50%;margin-top: 16px;" >Submit</input>'
@@ -127,7 +127,7 @@ function shearCalculate(){
 				   +'<input type="number"  value="" id="text17"  style=margin:15px 10px;width:150%;height:50%;" class=" form-control" />'
 				   +'</div>'
 				   +'<div class="col-sm-2"  id="submitStep1">'
-	               +'<button type="submit" class="btn btn-info"  id="refClause112" data-toggle="modal" data-target="#myModal" style="width:100%;margin-top: 15px;" >Refer</input>'
+	               +'<button type="submit" class="btn btn-info"  id="refClause24" data-toggle="modal" data-target="#myModal1" style="width:100%;margin-top: 15px;" >Refer</input>'
 				   +'</div>'
 				   +'<div class="col-sm-2"  id="submitStep1">'
 				   +'<button type="submit" class="btn btn-danger"  id="submit_load17" data-toggle="modal" data-target="#myModal" style="width:100%;height:50%;margin-top: 16px;" >Submit</input>'
@@ -504,7 +504,7 @@ function shearCalculate(){
 //			ptPercent = 0.13;
 //		     conVal = 20;
 		    
-		    console.log("ptPercent : "+ptPercent);
+//		    console.log("ptPercent : "+ptPercent);
 		     
 		            compArr = [0.15,0.25,0.5,0.75,1,1.25,1.5,1.75,2,2.25,2.5,2.75,3];
 		
@@ -528,7 +528,7 @@ function shearCalculate(){
 
 				}
 				
-				console.log("conValArr "+conValArr);
+//				console.log("conValArr "+conValArr);
 				var closestPrevious = 0, closestNext = 0, comparePrevious = 0, compareNext = 0;
 	
 	   if(ptPercent<=0.15){
@@ -619,19 +619,27 @@ function shearCalculate(){
 	}
 		
 	
-		$("#refClause111").click(function(){
-	var ht1 = '<iframe src="images/plain-and-reinforced-concrete.pdf#page=74"  width="100%;" height="600px;" ></iframe>'
-	$("#MsgModal").html(ht1);
-		});
+		$("#refClause23").click(function () {
+   var ht = '<iframe src="images/plain-and-reinforced-concrete.pdf#page=74"  width="100%;" height="600px;" ></iframe>'
 	
+	$(".modal-header").css('background-color', '#45898680');
+	$(".modal-header").html("Reference");
+	$("#MsgModal1").html(ht);
+});
+
 		    $("#text17").click(function(){
 			$("#refClauseShear1").prop("hidden",false);
 			blinkerShear();
 		});
 		
-		$("#refClause112").click(function(){
-			var ht2 = '<iframe src="images/plain-and-reinforced-concrete.pdf#page=74"  width="100%;" height="600px;" ></iframe>'
-	        $("#MsgModal").html(ht2);
+		$("#refClause24").click(function(){
+			
+    var ht = '<iframe src="images/plain-and-reinforced-concrete.pdf#page=74"  width="100%;" height="600px;" ></iframe>'
+	
+	$(".modal-header").css('background-color', '#45898680');
+	$(".modal-header").html("Reference");
+	$("#MsgModal1").html(ht);
+	
 		});
 		
 		
@@ -783,6 +791,7 @@ $("#submit_load19").click(function(){
 		$("#submit_load19").prop("disabled",true);
 		$("#sGradeVal").prop("disabled",true);
 		asvCalculate();
+		autoScroll();
 	$("#divRelTemp").html('<center><label style=" margin-left: 10px;font-size: x-large; font-style: italic; font-weight: bold; margin-top:5px;" id = "relTempMsgCond1">Provide 2 legged stirrups of '+fysChange+' mm &empty;<sub>s</sub> @ '+(roundDownToNearestFive(condArr[0]))+' mm c/c</label></center>');
 
 	}
@@ -857,6 +866,7 @@ $("#submit_load22").click(function(){
                      $("#text18").prop("disabled",true);
                      $("#divRelTemp1").prop("hidden",false);
                      svCalculateCond3();
+                     autoScroll();
              	$("#divRelTemp1").html('<center><label style=" margin-left: 10px;font-size: x-large; font-style: italic; font-weight: bold; margin-top:5px;" id = "relTempMsgCond1">Provide 2 legged stirrups of '+fysChange3+' mm &empty;<sub>s</sub> @ '+(roundDownToNearestFive(condArr[0]))+' mm c/c</label></center>');
 
 				} else if (vcVal != vcValEnter) {
@@ -881,6 +891,7 @@ $("#submit_load22").click(function(){
                      $("#text18").prop("disabled",true);
 	        $("#divRelTemp1").prop("hidden",false);
 	        svCalculateCond3();
+	        autoScroll();
              	$("#divRelTemp1").html('<center><label style=" margin-left: 10px;font-size: x-large; font-style: italic; font-weight: bold; margin-top:5px;" id = "relTempMsgCond1">Provide 2 legged stirrups of '+fysChange3+' mm &empty;<sub>s</sub> @ '+(roundDownToNearestFive(condArr[0]))+' mm c/c</label></center>');
         
 				} else {
@@ -910,7 +921,7 @@ $("#submit_load22").click(function(){
 		var asvDiv = (3.14/2);
 		var asvCal = (asvDiv*sGradeSelect*sGradeSelect).toFixed(2);
 		 asvVal = parseFloat(asvCal);
-		console.log("asvVal : "+asvVal);
+//		console.log("asvVal : "+asvVal);
 		
 		var svNum = asvVal*0.87*sGradeSelect;
 		var svDeno = beamWidthVal*0.4;
@@ -924,11 +935,11 @@ $("#submit_load22").click(function(){
 		sc3 = asvVal;
 		
 		 condArr = [svVal,sc1,sc2,sc3];
-		console.log("Before sorting : "+condArr);
+//		console.log("Before sorting : "+condArr);
 		condArr.sort(compareNumbers);
-		console.log("sorted array is : "+condArr);
-        console.log("condArr"+condArr[0]);
-		console.log(roundDownToNearestFive(condArr[0]));
+//		console.log("sorted array is : "+condArr);
+//        console.log("condArr"+condArr[0]);
+//		console.log(roundDownToNearestFive(condArr[0]));
 	}
 	
 	function compareNumbers(a, b) {
@@ -941,7 +952,7 @@ $("#submit_load22").click(function(){
 		var asvDiv = (3.14/2);
 		var asvCal = (asvDiv*fysChange3*fysChange3).toFixed(2);
 		 asvVal = parseFloat(asvCal);
-		console.log("asvVal : "+asvVal);
+//		console.log("asvVal : "+asvVal);
 		
 		var numMult = (0.87*sGradeSelect3*asvVal*valueD1).toFixed(2);
 		var denoSub = ((shearCritical-vcVal)).toFixed(2);
@@ -955,11 +966,11 @@ $("#submit_load22").click(function(){
 		sc33 = asvVal;
 		
 		 condArr3 = [svValCond3,sc13,sc23,sc33];
-		console.log("Before sorting : "+condArr3);
+//		console.log("Before sorting : "+condArr3);
 		condArr3.sort(compareNumbers);
-		console.log("sorted array is : "+condArr3);
-		 console.log("condArr"+condArr[0]);
-		console.log(roundDownToNearestFive(condArr[0]));
+//		console.log("sorted array is : "+condArr3);
+//		 console.log("condArr"+condArr[0]);
+//		console.log(roundDownToNearestFive(condArr[0]));
 		
 	}
 }
@@ -984,4 +995,81 @@ function blinkerShear()
         
     }  
 	setTimeout('blinkerShear()', 1000);
+}
+
+
+function criticalValues(){
+	
+	
+
+	$("#forwardButton").removeClass("disabled");
+    $('#backwardButton').removeClass("disabled");
+	
+	$("#sForceStress").prop("hidden",false);
+	$("#refClauseShear").prop("hidden",false);
+	$("#sForceStrength").prop("hidden",false);
+	$("#sMaxShearStress").prop("hidden",false);
+	
+	$("#text14").val(shearCritical);
+	$("#text15").val(criticalSec);
+	$("#text16").val(finalAns);
+	$("#text17").val(maxShear);
+	
+	$("#text14").prop("disabled",true);
+	$("#text15").prop("disabled",true);
+	$("#text16").prop("disabled",true);
+	$("#text17").prop("disabled",true);
+	
+	$("#submit_load14").prop("disabled",true);
+	$("#submit_load15").prop("disabled",true);
+	$("#submit_load16").prop("disabled",true);
+	$("#submit_load17").prop("disabled",true);
+	
+	if(criticalSec<finalAns){
+			if(finalAns<maxShear){
+				$("#condition1").prop("hidden",false);
+				$("#steelGradeStirrups").prop("hidden",false);
+				$("#divRelTemp").prop("hidden",false);
+				$("#longReinForD2").val(fysChange);				
+				$("#longReinForD2").prop("disabled",true);
+				$("#submit_load18").prop("disabled",true);
+				$("#sGradeVal").val(sGradeSelect);
+				$("#sGradeVal").prop("disabled",true);
+				$("#submit_load19").prop("disabled",true);
+			}
+		}
+		
+		if(criticalSec>maxShear){
+			$("#divRelTemp").prop("hidden",false);
+				$("#divRelTemp").html('<center><label style=" margin-left: 10px;font-size: x-large; font-style: italic; font-weight: bold; margin-top:5px;" id = "relTempMsgCond1">Revise the section size</label></center>');
+				
+
+		}
+		
+		if(finalAns<criticalSec){
+			if(criticalSec<maxShear){
+				$("#condition2").prop("hidden",false);
+				$("#divRelTemp1").prop("hidden",false);
+				$("#steelGradeStirrups3").prop("hidden",false);
+				$("#vcCalculate").prop("hidden",false);
+				$("#longReinForD22").val(fysChange3);
+				$("#longReinForD22").prop("disabled",true);
+				$("#submit_load20").prop("disabled",true);
+				$("#sGradeVal3").val(sGradeSelect3);
+				$("#sGradeVal3").prop("disabled",true);
+				$("#submit_load21").prop("disabled",true);
+				$("#text18").val(vcVal);
+				$("#text18").prop("disabled",true);
+				$("#submit_load22").prop("disabled",true);
+			}
+		}
+	
+	bendingMomentFinalShear();
+	 var x=50,y=-50;
+	t1 = paper.text(x+170,y+310,shearCritical+" kN").attr({'font-weight': 'bold','font-size':'15px','stroke':'#000'});    
+    t2 = paper.text(x+352,y+390,(-shearCritical)+" kN").attr({'font-weight': 'bold','font-size':'15px','stroke':'#000'});    
+}
+
+function autoScroll() {
+    $("html, body").animate({ scrollTop: $(document).height() }, 1000); // Scroll to bottom in 5 sec
 }
