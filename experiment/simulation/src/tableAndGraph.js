@@ -5,7 +5,9 @@
  var arr = [];
  var steelCostLongCal = 0;
  var steelCostLo = [];
-
+ var tableMainDiv;
+ var longStrirrupTableVal = 0;
+var concreteSelVal = 0;
  var longReinTableSel = 0;
 			var steelLongRateVal = 0;
 			
@@ -23,8 +25,16 @@
 			 var finalDiam = [];
 			 
 			 let astRoundOff;
+	var tabDisp = 0;
 			 
  function table(){
+	if(tabDisp==0){
+	$("#forwardButton").addClass("disabled");
+    $('#backwardButton').addClass("disabled");
+    tabDisp++;
+	}else{
+		 $('#backwardButton').removeClass("disabled");
+	}
   dArr = [300,380,450,500,530,600,700,800,900,1000];
  
  astTension();
@@ -60,7 +70,7 @@ var htmTg = '<div class="row" id="gsLongRein" >'
 				   
 				   +'<div class="row" id="gsLongStirrup" hidden>'
 				   +'<div class="col-sm-4 ">'
-				   +'<label  id="enterLoad"  class="" style="font-size:16px;margin:15px 10px ;">Grade of steel for longitudinal reinforcement </label>'
+				   +'<label  id="enterLoad"  class="" style="font-size:16px;margin:15px 10px ;">Grade of steel for longitudinal stirrup </label>'
 				   +'</div>'
 				   
 				       +'<div class="col-sm-2 marginBottom" >'
@@ -184,7 +194,7 @@ var htmTg = '<div class="row" id="gsLongRein" >'
 			}
 		
 	});
-	var longStrirrupTableVal = 0;
+	
 	
 	
 	$("#longStrirrupTable").change(function(){
@@ -219,7 +229,7 @@ var htmTg = '<div class="row" id="gsLongRein" >'
 			
 		});
 		
-		var concreteSelVal = 0;
+		
 		$("#concreteSel").change(function(){
 				concreteSelVal = parseInt($("#concreteSel").val());
 			});
@@ -334,7 +344,7 @@ let index = areaArr.indexOf(valueToFind);
 							 finJson.costGraph=graphArr;
 							 graphCost();
 							 
-							 console.log(finJson);
+//							 console.log(finJson);
 			 
 			}
 			}
@@ -398,6 +408,8 @@ let index = areaArr.indexOf(valueToFind);
 	
 	
 	function graphCost(){
+		$('#backwardButton').removeClass("disabled");
+		
     var xdata = dArr;
     var ydata = costArr;
 
@@ -415,17 +427,17 @@ let index = areaArr.indexOf(valueToFind);
         graphData1.push(tempArr);
     }
 
-    console.log("xdata " + xdata);
-    console.log("ydata " + ydata);
-    console.log("graphData1 " + graphData1);
+//    console.log("xdata " + xdata);
+//    console.log("ydata " + ydata);
+//    console.log("graphData1 " + graphData1);
     ydata.sort(function(a, b) { return a - b });
     xdata.sort(function(a, b) { return a - b });
-    console.log("After xdata " + xdata);
-    console.log("After ydata " + ydata);
+//    console.log("After xdata " + xdata);
+//    console.log("After ydata " + ydata);
     var Xmax = parseFloat(xdata[xdata.length - 1]);
     var Ymax = parseFloat(ydata[ydata.length - 1]);
-    console.log("Xmax " + Xmax);
-    console.log("Ymax " + Ymax);
+//    console.log("Xmax " + Xmax);
+//    console.log("Ymax " + Ymax);
 
     var Xmin = parseFloat(xdata[0]);
     var Ymin = parseFloat(ydata[0]);
@@ -521,7 +533,7 @@ let index = areaArr.indexOf(valueToFind);
 			 steelCostLongCal = parseFloat(multiCalculate);
              steelCostLo.push(steelCostLongCal);
 		}
-		console.log(steelCostLo);
+//		console.log(steelCostLo);
 	} 
 	
 //	function concreteCost(){
@@ -563,7 +575,7 @@ let index = areaArr.indexOf(valueToFind);
 				
 				var lenOfStr = firstTerm+secTerm+thirdTerm;
 				
-				console.log("lenOfStr1 : "+lenOfStr);
+//				console.log("lenOfStr1 : "+lenOfStr);
 				
 				var crossArea1 = ((3.14/4)*fyChangeFin*fyChangeFin).toFixed(2);
 				var crossArea = parseFloat(crossArea1);
@@ -585,7 +597,7 @@ let index = areaArr.indexOf(valueToFind);
 			    concreteCostArr.push(concreteCostLo);
 				}
 				
-				console.log(concreteCostArr);
+//				console.log(concreteCostArr);
 }
 
 //   function concreteCost(){
@@ -659,8 +671,8 @@ let index = areaArr.indexOf(valueToFind);
 					
 				}
 				
-				console.log(" sGradeFin : "+sGradeFin);
-				console.log(" fyChangeFin : "+fyChangeFin);
+//				console.log(" sGradeFin : "+sGradeFin);
+//				console.log(" fyChangeFin : "+fyChangeFin);
 				
 				var firstTerm1 = ((beamWidthVal-dVal)*2).toFixed(2);
 				var secTerm1 = ((dArr[i]-dVal)*2).toFixed(2);
@@ -672,7 +684,7 @@ let index = areaArr.indexOf(valueToFind);
 				
 				var lenOfStr = firstTerm+secTerm+thirdTerm;
 				
-				console.log("lenOfStr1 : "+lenOfStr);
+//				console.log("lenOfStr1 : "+lenOfStr);
 				
 				var crossArea1 = ((3.14/4)*fyChangeFin*fyChangeFin).toFixed(2);
 				var crossArea = parseFloat(crossArea1);
@@ -690,7 +702,7 @@ let index = areaArr.indexOf(valueToFind);
 	
 				
 	    }
-	   console.log(stiruppArr); 
+//	   console.log(stiruppArr); 
 	}
 	
 	
@@ -701,7 +713,7 @@ let index = areaArr.indexOf(valueToFind);
 		costArr.push(totcost);
 		}
 		
-		console.log(costArr);
+//		console.log(costArr);
 	}
 	
 	
@@ -733,13 +745,13 @@ let index = areaArr.indexOf(valueToFind);
 			var mulValues = finalSub*divFirst*beamWidthVal*sub;
 			astCalculated = mulValues.toFixed(2);
 			
-			console.log("astCalculated : "+astCalculated);
+//			console.log("astCalculated : "+astCalculated);
 			
 			var minCriteriaNum = (0.85*beamWidthVal*sub).toFixed(2);
 			var minCriteriaDiv = (minCriteriaNum/steelVal).toFixed(2);
 			minCriteria = parseFloat(minCriteriaDiv);
 			
-			console.log("minCriteria : "+minCriteria);
+//			console.log("minCriteria : "+minCriteria);
 			
 			var maxCrit = (0.04*beamWidthVal*dArr[i]).toFixed(2);
              maxCriteria = parseFloat(maxCrit);
@@ -773,14 +785,14 @@ let index = areaArr.indexOf(valueToFind);
 		    var sfMul = ((shearForce*1000)*(sfSub)).toFixed(3);
 		    var sfDiv = (sfMul/sfDiv).toFixed(2);
 		     shearCriticalTab = parseFloat(sfDiv);
-		     console.log(" shearCriticalTab : "+shearCriticalTab);
+//		     console.log(" shearCriticalTab : "+shearCriticalTab);
 		     
 		      var numMul = shearCriticalTab;
 		    var denoMul = beamWidthVal*(dArr[i]-effectCover);
 		    
 		    var finDiv = (numMul/denoMul).toFixed(2);
 		     criticalSecTab = parseFloat(finDiv);
-		     console.log(" criticalSecTab : "+criticalSecTab);
+//		     console.log(" criticalSecTab : "+criticalSecTab);
 		     
 		     
 		     var bdMul = beamWidthVal*(dArr[i]-effectCover);
@@ -790,7 +802,7 @@ let index = areaArr.indexOf(valueToFind);
 //			ptPercent = 0.13;
 //		     conVal = 20;
 		    
-		    console.log("ptPercent : "+ptPercent);
+//		    console.log("ptPercent : "+ptPercent);
 		     
 		            compArr = [0.15,0.25,0.5,0.75,1,1.25,1.5,1.75,2,2.25,2.5,2.75,3];
 		
@@ -1019,5 +1031,36 @@ function roundDownToNearestFive(num) {
     return Math.floor(num / 5) * 5;
 }
 	}
-	console.log(shearArr);  
+//	console.log(shearArr);  
+	
+	function finalPage(){
+		
+//		$("#forwardButton").removeClass("disabled");
+//    $('#backwardButton').removeClass("disabled");
+		
+		$("#gsLongStirrup").prop("hidden",false);
+		$("#gsConcrete").prop("hidden",false);
+		
+		$("#longReinTable").val(longReinTableSel);
+		$("#longReinTable").prop("disabled",true);
+		$("#steelLongRate").val(steelLongRateVal);
+		$("#steelLongRate").prop("disabled",true);
+		$("#submitFirstDiv").prop("disabled",true);
+		
+		$("#longStrirrupTable").val(longStrirrupTableVal);
+		$("#longStrirrupTable").prop("disabled",true);
+		$("#steelStirupRate").val(steelStirupRateVal);
+		$("#steelStirupRate").prop("disabled",true);
+		$("#submitSecDiv").prop("disabled",true);
+		
+		$("#concreteSel").val(concreteSelVal);
+		$("#concreteSel").prop("disabled",true);
+		
+		$("#concreteRate").val(concreteRateVal);
+		$("#concreteRate").prop("disabled",true);
+		$("#submitThirdDiv").prop("disabled",true);
+		
+		$("#page6Div1").append(tableMainDiv);
+		
+	}
 	

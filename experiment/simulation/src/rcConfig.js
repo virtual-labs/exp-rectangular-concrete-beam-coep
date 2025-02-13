@@ -22,7 +22,7 @@ var initFlag = false;
 var htm=''
 	htm+='<div class="row">'	
 	+'<div class="col-sm-6">'
-	+'<label class="labelstyle marginBottom" >Enter the value of clear span of beam  <label style="color:#8f0831;">L<sub>0</sub> (m)</label> : </label>'
+	+'<label class="labelstyle marginBottom" >Enter the value of clear span of beam  <label style="color:#8f0831;">L<sub>0</sub>(m)</label>: </label>'
 	+'</div>'
 	+'<div class="col-sm-4">'
 	+'<input type="number"   onblur="updateBeamSpanVal()" style= "width:100%;"  class=" form-control" id="beamSpan" >'
@@ -83,24 +83,24 @@ var htm=''
        +'</div>'
        +'</div>'
 	   
-	   + '<div class="row">'	     
-	   +'<div class="col-sm-6">'
-	   +'<label class="labelstyle marginBottom">Select type of load acting on beam :  </label>'
-	   +'</div>'
-	   
-	   +'<div class="col-sm-4">'
-	   +'<select  class="form-control selectConf marginBottom" id="loadOnBeam" " style="height:auto;margin-bottom:5px; " >'
-	   +'<option value="0">--- Select  --- </option>'
-	   +'<option value="1" >Uniform distributed load  </option>'
-	   +'<option value="2" disabled>Pointer load  </option>'
-	   +'<option value="3" disabled>Variable pointer load  </option>'
-	  
-	   +'</select>'	   
-	  
-	   +'</div>'
-	   +'<div class="col-sm-2">'
-	    +'</div>'
-       +'</div>'
+//	   + '<div class="row">'	     
+//	   +'<div class="col-sm-6">'
+//	   +'<label class="labelstyle marginBottom">Select type of load acting on beam :  </label>'
+//	   +'</div>'
+//	   
+//	   +'<div class="col-sm-4">'
+//	   +'<select  class="form-control selectConf marginBottom" id="loadOnBeam" " style="height:auto;margin-bottom:5px; " >'
+//	   +'<option value="0">--- Select  --- </option>'
+//	   +'<option value="1" >Uniform distributed load  </option>'
+//	   +'<option value="2" disabled>Pointer load  </option>'
+//	   +'<option value="3" disabled>Variable pointer load  </option>'
+//	  
+//	   +'</select>'	   
+//	  
+//	   +'</div>'
+//	   +'<div class="col-sm-2">'
+//	    +'</div>'
+//       +'</div>'
     
 	+'<div class="row">'	
 	+'<div class="col-sm-6">'
@@ -237,18 +237,23 @@ var htm=''
 	  
 	   +'</div>'	   
 	   
-//	    +'<div class="col-sm-12">'
-//	    +'<button type="button"   class="btn btn-danger btnStyle" id="checkConfg" data-toggle="modal" data-target="#myModal" ><b>CONFIGURE </b></button>'
-////	    +'<button type="button"   class="btn btn-danger btnStyle" id="nextLevelForConfig"  hidden><b>NEXT LEVEL</b></button>'
-//	    +'</div>' 
+	+'<div class="col-sm-12">'
+	    +'<center><button type="button"   class="btn btn-danger btnStyle" id="checkConfg" style="margin-top:10px; width:50%"data-toggle="modal" data-target="#myModal" ><b>CONFIGURE </b></button></center>'
+	    +'</div>'
 	   
 	
     $("#page1Div2").html(htm);
-	 $(".next").click(function(){console.log("clicked")});
+	 $(".next").click(function(){});
    $(".next").prop("disabled",true);
    
    $("#nominalCover").click(function(){
-	toastr.warning('Enter nominal cover value between 20 to 70 mm');
+//	toastr.warning('Enter nominal cover value between 20 to 70 mm');
+
+ 
+//	toastr.warning('Enter Values between 20 mm to 70 mm');
+	$("#blink2").prop("hidden",false);
+	blinker();
+ toastr.error('<span class="blinking21">Enter Values between 20 mm to 70 mm</span>');
 });
    
    $("#nominalCover").change(function(){
@@ -264,19 +269,25 @@ var htm=''
 		if(beamSpanVal==""||conVal==0||steelVal==0||loadOnBeamVal==0||loadMagVal==""||
 		beamWidthVal==0||w1WidthVal==""||w2WidthVal==""||longReinVal==0||
 		shearReinVal==0||nominalCoverVal==""){
-           toastr.warning('Enter Appropraite Values');
+//           toastr.warning('Enter Appropraite Values');
+
+            toastr.error('<span class="blinking1">Enter Appropraite Values</span>');
+
 		}else{
 		nominalCoverVal = parseFloat($("#nominalCover").val());
 		w1WidthVal = parseFloat($("#w1Width").val());
 		w2WidthVal = parseFloat($("#w2Width").val());
 		
 		if(nominalCoverVal<20||nominalCoverVal>70){
-					toastr.warning('Enter nominal cover value between 20 to 70 mm');
+//					toastr.warning('Enter nominal cover value between 20 to 70 mm');
+          toastr.error('<span class="blinking1">Enter nominal cover value between 20 to 70 mm</span>');
 				}else if(w1WidthVal<0.23||w1WidthVal>2||w2WidthVal<0.23||w2WidthVal>2){
-					toastr.warning('Enter Value of w1 and w2 between 0.23m to 2m');
+//					toastr.warning('Enter Value of w1 and w2 between 0.23m to 2m');
+                    toastr.error('<span class="blinking1">Enter Value of w1 and w2 between 0.23m to 2m</span>');
 				}else if(beamSpanVal<0||loadMagVal<0||beamWidthVal<0)	
 				   {
-					toastr.warning('Enter Appropriate Values');
+//					toastr.warning('Enter Appropriate Values');
+                   toastr.error('<span class="blinking1">Enter Appropriate Values</span>');
 			    }else{
 				
 		beamSpanVal = parseFloat($("#beamSpan").val());
@@ -285,9 +296,8 @@ var htm=''
 		loadMagVal = parseFloat($("#loadMag").val());
 		beamWidthVal = parseFloat($("#beamWidth").val());
 		
-		
-				
-				$('#forwardButton').removeClass("disabled");
+			
+//				$('#forwardButton').removeClass("disabled");
 //            $('#backwardButton').prop("hidden",false);
 //					$(".next").prop("disabled",false);	
            }
@@ -297,15 +307,16 @@ var htm=''
    
    
     $("#concreteGrade").change(function(){
-	
+	  toastr.remove();
 	  conVal = $("#concreteGrade").val();
-	  console.log("conVal : "+conVal);
+//	  console.log("conVal : "+conVal);
 	  change();
 	  $("#concreteLabel").prop("hidden",false);
 	  $("#relTemp").text(conVal+" Mpa");
     });
     
     $("#steelGrade").change(function(){
+	toastr.remove();
 		steelVal = $("#steelGrade").val();
 		
 		if(steelVal==250){
@@ -316,7 +327,7 @@ var htm=''
 		steelStr = 0.133;
 	}
 		
-		console.log("steelVal : "+steelVal);
+//		console.log("steelVal : "+steelVal);
 		  $("#steelLabel").prop("hidden",false);	
 		  $("#relTemp1").text(steelVal+" Mpa");
 		
@@ -343,15 +354,13 @@ var htm=''
 		}
 	});
 	
-	$("#w1Width").click(function(){
-		
-		$("#blink").prop("hidden",true);
-	});
+	
 	
 	
 	
 	$("#longRein").change(function(){
 //		$("#page1Div1").html('');
+toastr.remove();
 		longReinVal = $("#longRein").val();
 //		ren();	
 //		change();
@@ -375,16 +384,29 @@ var htm=''
 
 
      $("#w1Width").click(function(){
-	   toastr.warning('Enter Value of w1 between 0.23m to 2m');
+	   toastr.remove();
+//	   toastr.warning('Enter Value of w1 between 0.23m to 2m');
+	   toastr.error('<span class="blinking21">Enter Value of w1 between 0.23m to 2m');
+	   $("#blink").prop("hidden",true);
 });
 
       $("#w2Width").click(function(){
-	   toastr.warning('Enter Value of w2 between 0.23m to 2m');
+	toastr.remove();
+	    toastr.error('<span class="blinking21">Enter Value of w1 between 0.23m to 2m');
 });
 
-   $("#refer").click(function(){
+//   $("#refer").click(function(){
+//	var ht = '<iframe src="images/plain-and-reinforced-concrete.pdf#page=48"  width="100%;" height="600px;" ></iframe>'
+//	$("#MsgModal1").html(ht);
+//});
+	
+	$("#refer").click(function(){
 	var ht = '<iframe src="images/plain-and-reinforced-concrete.pdf#page=48"  width="100%;" height="600px;" ></iframe>'
+	
+	$(".modal-header").css('background-color', '#45898680');
+	$(".modal-header").html("Reference");
 	$("#MsgModal1").html(ht);
+	
 });
 	
 	function nextLevel2(){
@@ -399,13 +421,27 @@ var htm=''
 		w2WidthVal = parseFloat($("#w2Width").val());
 		
 		if(nominalCoverVal<20||nominalCoverVal>70){
-					toastr.warning('Enter nominal cover value between 20 to 70 mm');
+//					toastr.warning('Enter nominal cover value between 20 to 70 mm');
+         toastr.error('<span class="blinking1">Enter nominal cover value between 20 to 70 mm</span>');
 				}else if(w1WidthVal<0.23||w1WidthVal>2||w2WidthVal<0.23||w2WidthVal>2){
-					toastr.warning('Enter Value of w1 and w2 between 0.23m to 2m');
+//					toastr.warning('Enter Value of w1 and w2 between 0.23m to 2m');
+             toastr.error('<span class="blinking1">Enter Value of w1 and w2 between 0.23m to 2m</span>');
+		
 				}else if(beamSpanVal<0||loadMagVal<0||beamWidthVal<0)	
 				   {
-					toastr.warning('Enter Appropriate Values');
-			    }else{
+//					toastr.warning('Enter Appropriate Values');
+				toastr.error('<span class="blinking1">Enter Appropriate Values');
+			    }else if(beamSpanVal>10){
+		   
+		   $(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Enter the value between 1m to 10m");
+		   
+	}
+			       
+			      
+			    else{
 				
 		beamSpanVal = parseFloat($("#beamSpan").val());
 		lenghtBeam = beamSpanVal;
@@ -428,26 +464,26 @@ var htm=''
 //			$('#forwardButton').addClass("disabled");
 			calculateLength();
 			
-			if(initFlag == true){
-				$(".modal-backdrop").hide();				
-				console.log("click1");
-			$("#submit_load1").click();
-			$("#submit_load2").click();
-			$("#submit_load3").click();
-			$("#submit_load4").click();
-			$("#submit_load5").click();
-			}
+//			if(initFlag == true){
+//				$(".modal-backdrop").hide();				
+//				console.log("click1");
+//			$("#submit_load1").click();
+//			$("#submit_load2").click();
+//			$("#submit_load3").click();
+//			$("#submit_load4").click();
+//			$("#submit_load5").click();
+//			}
 			
-			initFlag = true;
+//			initFlag = true;
 			
 			SecondPage();
-			$(".modal-backdrop").hide();
+//			$(".modal-backdrop").hide();
            }
            }		
 	
 		
 //			divFlg = 1;
-			console.log("welcome");
+//			console.log("welcome");
          
 			
 //			$("#btnModal").removeClass("btn-danger").addClass("btn-success");
@@ -462,59 +498,78 @@ var htm=''
 //			}
 	}
 	
-//	$("#checkConfg").click(function(){
-//		beamSpanVal = $("#beamSpan").val();
-//		lenghtBeam = beamSpanVal;
-//		loadOnBeamVal = $("#loadOnBeam").val();
-//		loadMagVal = $("#loadMag").val();
-//		beamWidthVal = $("#beamWidth").val();
-//		w1WidthVal = $("#w1Width").val();
-//		w2WidthVal = $("#w2Width").val();
-//		nominalCoverVal = $("#nominalCover").val();
-//		
-//		
-//			
-//		
-//			if(beamSpanVal==""||conVal==0||steelVal==0||loadOnBeamVal==0||loadMagVal==""||beamWidthVal==0||w1WidthVal==""||w2WidthVal==""||longReinVal==0||shearReinVal==0||nominalCoverVal==""){
-//				 $(".modal-header").html("Error Message");
-//			$(".modal-header").css("background","#9c1203b0");
-//			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
-//			$("#MsgModal").html("Enter Appropraite Values");
-//			}else{
-//				
-//				if(nominalCoverVal<20||nominalCoverVal>70){
-//					 $(".modal-header").html("Error Message");
-//			$(".modal-header").css("background","#9c1203b0");
-//			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
-//			$("#MsgModal").html("Enter nominal cover value between 20 to 70 mm");
-//				}else{
-//					
-//				
-////				$("#checkConfg").prop("hidden",true);
-////				$("#nextLevelForConfig").prop("hidden",false);				
-//			
-////			divFlg = 1;
-//			getValuesEntered();
-//			$("#blink2").prop("hidden",true);
-//			
-//			$("#btnModal").removeClass("btn-danger").addClass("btn-success");
-//	        $(".modal-header").html("Success Message");
-//            $(".modal-header").css("background","#5cb85c");
-//			$("#MsgModal").html("Configured Successfully");
-//			
-//			$("#page1,#page3,#page4,#page5").prop("hidden",true);
-//			$("#page2").prop("hidden",false);
-//			calculateLength();
-//			SecondPage();
-//			
-////			$("#page2Div2").html('');
-////		valuesCon();
-//				}
-//			}
+	$("#checkConfg").click(function(){
+		toastr.remove();
+		beamSpanVal = $("#beamSpan").val();
+		lenghtBeam = beamSpanVal;
+		loadOnBeamVal = $("#loadOnBeam").val();
+		loadMagVal = $("#loadMag").val();
+		beamWidthVal = $("#beamWidth").val();
+		w1WidthVal = $("#w1Width").val();
+		w2WidthVal = $("#w2Width").val();
+		nominalCoverVal = $("#nominalCover").val();
 		
 		
+			
 		
-//	});
+			if(beamSpanVal==""||conVal==0||steelVal==0||loadOnBeamVal==0||loadMagVal==""||beamWidthVal==0||w1WidthVal==""||w2WidthVal==""||longReinVal==0||shearReinVal==0||nominalCoverVal==""){
+				 $(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Enter Appropraite Values");
+			}else{
+				
+				if(nominalCoverVal<20||nominalCoverVal>70){
+					 $(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Enter nominal cover value between 20 to 70 mm");
+				  }else if(beamSpanVal>10){
+		   
+		   $(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Enter the value between 1m to 10m");
+		   
+	}
+				else{
+					
+				
+//				$("#checkConfg").prop("hidden",true);
+//				$("#nextLevelForConfig").prop("hidden",false);				
+			
+//			divFlg = 1;
+			getValuesEntered();
+			$("#blink2").prop("hidden",true);
+   
+               $('#forwardButton').removeClass("disabled");		
+			$("#btnModal").removeClass("btn-danger").addClass("btn-success");
+	        $(".modal-header").html("Success Message");
+            $(".modal-header").css("background","#5cb85c");
+			$("#MsgModal").html("<b>Configuration successful. Click the next arrow to proceed.</b>");
+             
+   
+//             $("#checkConfg").prop("disabled",true);
+             $("#beamSpan").prop("disabled",true);
+             $("#concreteGrade").prop("disabled",true);
+             $("#steelGrade").prop("disabled",true);
+            $("#loadMag").prop("disabled",true);
+            $("#beamWidth").prop("disabled",true);
+             $("#w1Width").prop("disabled",true);
+             $("#w2Width").prop("disabled",true);
+             $("#longRein").prop("disabled",true);
+             $("#shearRein").prop("disabled",true);
+              $("#nominalCover").prop("disabled",true);
+           
+		
+           
+			
+//			$("#page2Div2").html('');
+//		valuesCon();
+				}
+			}
+
+	});
 	
 	
 //	$("#nextLevelForConfig").click(function(){
