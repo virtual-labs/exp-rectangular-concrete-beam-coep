@@ -9,9 +9,15 @@ var effectCoverEnterVal, facLoadEnterVal,effspanVal,shearForceVal,bendingMomVal;
 var page2Flg = false;
 var reinDiamanicFlg = 0;
 
+var oneTimeDisp = 1;
+
 function calculateLength(){
 	
-	console.log("length of beam "+lenghtBeam);
+	
+	$("#forwardButton").addClass("disabled");
+    $('#backwardButton').addClass("disabled");
+	
+//	console.log("length of beam "+lenghtBeam);
 	var htm1= ''
 	              +'<div class = "row ">'
 	              +'<div class="col-sm-1">'
@@ -60,7 +66,7 @@ function calculateLength(){
 	   +'<input type="number"  style= "width:100%;margin-top:10px;margin-left:15px;"  class=" form-control" id="text1">'
 	   +'</div>'
 	   +'<div class="col-sm-2">'
-	   +'<button type="submit" class="btn btn-info"  id="refClause1" data-toggle="modal" data-target="#myModal" style="width:100%;margin-top: 10px;" >Refer</input>'
+	   +'<button type="submit" class="btn btn-info"  id="refClause1" data-toggle="modal" data-target="#myModal1" style="width:100%;margin-top: 10px;" >Refer</input>'
 	   +'</div>'
 	   +'<div class="col-sm-2">'
 	   +'<button type="submit" class="btn btn-danger"  id="submit_load1" data-toggle="modal" data-target="#myModal" style="width:100%;margin-top: 10px;" >Submit</input>'
@@ -98,7 +104,7 @@ function calculateLength(){
 				   +'<input type="number"  value="" id="text3"  style=margin:15px 10px;width:150%;height:50%;" class=" form-control" />'
 				   +'</div>'
 				   +'<div class="col-sm-2">'
-	               +'<button type="submit" class="btn btn-info"  id="refClause11" data-toggle="modal" data-target="#myModal" style="width:100%;margin-top: 10px;" >Refer</input>'
+	               +'<button type="submit" class="btn btn-info"  id="refClause11" data-toggle="modal" data-target="#myModal1" style="width:100%;margin-top: 16px;" >Refer</input>'
 	               +'</div>'
 				   +'<div class="col-sm-2"  id="submitStep1">'
 				   +'<button type="submit" class="btn btn-danger"  id="submit_load3" data-toggle="modal" data-target="#myModal" style="width:100%;margin-top: 16px;" >Submit</input>'
@@ -174,13 +180,20 @@ function calculateLength(){
 		});
 		
 		$("#refClause1").click(function(){
-	var ht = '<iframe src="images/plain-and-reinforced-concrete.pdf#page=48"  width="100%;" height="600px;" ></iframe>'
-	$("#MsgModal").html(ht);
+//	var ht = '<iframe src="images/plain-and-reinforced-concrete.pdf#page=48"  width="100%;" height="600px;" ></iframe>'
+//	
+      var ht = '<iframe src="images/plain-and-reinforced-concrete.pdf#page=48"  width="100%;" height="600px;" ></iframe>'
+	
+	$(".modal-header").css('background-color', '#45898680');
+	$(".modal-header").html("Reference");
+	$("#MsgModal1").html(ht);
 		});
 		
 		$("#refClause11").click(function(){
 	var ht = '<iframe src="images/plain-and-reinforced-concrete.pdf#page=35"  width="100%;" height="600px;" ></iframe>'
-	$("#MsgModal").html(ht);
+	$(".modal-header").css('background-color', '#45898680');
+	$(".modal-header").html("Reference");
+	$("#MsgModal1").html(ht);
 		});
 		
 		
@@ -493,6 +506,7 @@ var bendingMomEnter;
 var id4=1;
 
 
+
 $("#submit_load5").click(function(){
 	if($("#text5").val() == '')
 			$("#text5").val(bendingMomVal);
@@ -517,16 +531,27 @@ $("#submit_load5").click(function(){
 				if (bendingMomEnter == bendingMom) {
 //				$("#page2Div2").html('');	
 //			lengthAdd();
+           
+//          if(oneTimeDisp==1){
+			$("#btnModal").removeClass("btn-danger").addClass("btn-success");
+	        $(".modal-header").html("Success Message");
+            $(".modal-header").css("background","#5cb85c");
+			$("#MsgModal").html("<b> Click the next arrow to proceed.</b>");
+//          $("#MsgModal").modal("show");
+          
+         setTimeout(() => {
 	         $("#submit_load5").prop("disabled",true);
 	         $("#text5").prop("disabled",true);
 //	         $("#bendingM").prop("hidden",false);
-              
+             }, 1000); 
+			  
              $("#page2Div2").html('');
              
 	         bendingMomentFinal();
-	          $("#forwardButton").removeClass("disabled");
+	         $("#forwardButton").removeClass("disabled");
              $('#backwardButton').removeClass("disabled");
-
+             oneTimeDisp++;
+//             }
 				} else if (bendingMomEnter != bendingMom) {
 				  $(".modal-header").html("Error Message");
 			$(".modal-header").css("background","#9c1203b0");
@@ -548,16 +573,26 @@ $("#submit_load5").click(function(){
 				if (bendingMomEnter== bendingMom) {
 //					$("#page2Div2").html('');
 //					lengthAdd();
-				 $("#submit_load5").prop("disabled",true);
+//           if(oneTimeDisp==1){
+          $("#btnModal").removeClass("btn-danger").addClass("btn-success");
+	        $(".modal-header").html("Success Message");
+            $(".modal-header").css("background","#5cb85c");
+			$("#MsgModal").html("<b> Click the next arrow to proceed.</b>");
+
+				 setTimeout(() => {
+	         $("#submit_load5").prop("disabled",true);
 	         $("#text5").prop("disabled",true);
 //	         $("#bendingM").prop("hidden",false);
-              
+             }, 1000); 
+//	         $("#bendingM").prop("hidden",false);
+               
              $("#page2Div2").html('');
             
 	         bendingMomentFinal();
-	         $("#forwardButton").removeClass("disabled");
-             $('#backwardButton').removeClass("disabled");
-
+	        $("#forwardButton").removeClass("disabled");
+			    $('#backwardButton').removeClass("disabled");
+			  
+//             }
 				} else {
 					
 			$("#btnModal").removeClass("btn-danger").addClass("btn-success");
@@ -573,31 +608,28 @@ $("#submit_load5").click(function(){
 	
 });
 
-  
-
 }
-
-
 
 function nextGraphLevel(){
 	
 	$("#page3").prop("hidden",false);
-	console.log("bending Moment"+bendingMom);
-	console.log("effectCover"+effectCover);
-	console.log("effspan"+effspan);	
+//	console.log("bending Moment"+bendingMom);
+//	console.log("effectCover"+effectCover);
+//	console.log("effspan"+effspan);	
 	
 	var tempJson = {};
 	 tempJson.effectCover =effectCover;
     tempJson.facLoad = facLoad;
     MasterJson.page2 = tempJson;
-	console.log(MasterJson);
+//	console.log(MasterJson);
 	
 	$("#eCover").prop("hidden",false);
 	$("#factoredLoad").prop("hidden",false);
 	
 //     $("#text1").prop("disabled",true);
 //	 $("#text2").prop("disabled",true);	
-	
+	 $("#submit_load5").prop("disabled",true);
+	         $("#text5").prop("disabled",true);
 	 $("#text1").val(MasterJson.page2.effectCover);
 	 $("#text2").val(MasterJson.page2.facLoad);
 	 $("#forwardButton").addClass("disabled");
@@ -615,6 +647,9 @@ function nextGraphLevel(){
 			
 			 let finVal = graphArr11[graphArr11.length-1];
 			$("#text9").val(finVal);
+			graphCreate(graphJson);
+			$("#forwardButton").removeClass("disabled");
+     $('#backwardButton').removeClass("disabled");  
 //			$("#calculatedAst").prop("hidden",false);
 //		
 //			$("#submit_load10").click();
@@ -640,4 +675,35 @@ function blinker1()
         
     } 
 	setTimeout('blinker1()', 1000);
+}
+
+function page2Value(){
+	
+	$("#forwardButton").removeClass("disabled");
+    $('#backwardButton').removeClass("disabled");
+	
+	$("#factoredLoad").prop("hidden",false);
+	$("#effectiveSpan").prop("hidden",false);
+	$("#shearF").prop("hidden",false);
+	$("#bendingM").prop("hidden",false);
+	
+	$("#text1").val(effectCover);
+	$("#text1").prop("disabled",true);
+	$("#submit_load1").prop("disabled",true);
+	
+	$("#text2").val(facLoad);
+	$("#text2").prop("disabled",true);
+	$("#submit_load2").prop("disabled",true);
+	
+	$("#text3").val(effspan);
+	$("#text3").prop("disabled",true);
+	$("#submit_load3").prop("disabled",true);
+	
+	$("#text4").val(shearForce);
+	$("#text4").prop("disabled",true);
+	$("#submit_load4").prop("disabled",true);
+	
+	$("#text5").val(bendingMom);
+	$("#text5").prop("disabled",true);
+	$("#submit_load5").prop("disabled",true);
 }

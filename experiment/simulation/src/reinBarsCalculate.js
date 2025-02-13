@@ -3,7 +3,7 @@ var nBarsMax;
 var nBars;
 var Dchange = 0;
 var astCalculatedpage4;
-
+var deffPage;
 function reinCalulateBar(){
 	$("#forwardButton").addClass("disabled");
     $('#backwardButton').addClass("disabled");
@@ -12,10 +12,10 @@ function reinCalulateBar(){
 	$("#centerText1").html("DIAGRAM");
 	
 	var htmbar = '<div class="row" id="overAllDepthSelect1" >'
-				   +'<div class="col-sm-5 ">'
+				   +'<div class="col-sm-6 ">'
 				   +'<label  id="enterLoad"  class="" style="font-size:16px;margin:15px 10px ;">Provide total depth (D) mm :  </label>'
 				   +'</div>'
-				   +'<div class="col-sm-4" id="valueStep1">'
+				   +'<div class="col-sm-3" id="valueStep1">'
 				   +'<select  class="form-control selectConf marginBottom"  " style="margin-top: 16px; margin-left:14px;  " id="selectD1">'
 				   +'<option value="0">--- Select  --- </option>'
 				   +'<option value="300" >300</option>'
@@ -37,10 +37,10 @@ function reinCalulateBar(){
 				   +'</div>' 
 				   
 				   +'<div class="row" id="deffCalculate1" hidden>'
-				   +'<div class="col-sm-5 ">'
+				   +'<div class="col-sm-6 ">'
 				   +'<label  id="enterLoad"  class="" style="font-size:16px;margin:15px 10px ;"> Provided effective depth d<sub>eff</sub> (D-d<sup>'+"'"+' </sup>) mm </label>'
 				   +'</div>'
-				   +'<div class="col-sm-4" id="valueStep1">'
+				   +'<div class="col-sm-3" id="valueStep1">'
 				   +'<input type="number"  value="" id="textLabel"  style="margin:15px 14px;" class=" form-control" disabled></input>'
 				   +'</div>'
 				   +'<div class="col-sm-3"  id="submitStep1">'
@@ -50,10 +50,10 @@ function reinCalulateBar(){
 				   
 				   
 				   +'<div class="row" id="calculatedAst1" hidden>'
-				   +'<div class="col-sm-5 ">'
+				   +'<div class="col-sm-6 ">'
 				   +'<label  id="enterLoad"  class="" style="font-size:16px;margin:15px 10px ;"> Required Ast for provided depth mm<sup>2</sup>:  </label>'
 				   +'</div>'
-				   +'<div class="col-sm-4" id="valueStep1">'
+				   +'<div class="col-sm-3" id="valueStep1">'
 				   +'<input type="number"  value="" id="text12"  style="margin:15px 14px;" class=" form-control" disabled></input>'
 				   +'</div>'
 				   +'<div class="col-sm-3"  id="submitStep1">'
@@ -134,7 +134,7 @@ function reinCalulateBar(){
 //	var imgeffectiveD = '<img src="images/rein.png " style="width: 100%;"  class="img-fluid" >'
 //            $("#page4Div2").html(imgeffectiveD);
 	
-	var deffPage;
+	
 	$("#submit_load11").click(function(){
 		$("#selectD1").change(function(){
 			valueD1 = parseInt($("#selectD1").val());
@@ -215,7 +215,7 @@ function reinCalulateBar(){
 	});
 		
 	$("#submit_load12").click(function(){
-		console.log("Dchange : "+Dchange);
+//		console.log("Dchange : "+Dchange);
 		
 		var twoD = effectCover*2;
 		var denoAddition = parseInt(50)+parseInt(Dchange);
@@ -225,12 +225,12 @@ function reinCalulateBar(){
 		var nBars1 = (numAddition/denoAddition).toFixed(2);
 //		console.log("nBars1 "+nBars1);
 		 nBarsMax = Math.ceil(nBars1);
-		 console.log("nBarsMax "+nBarsMax);
+//		 console.log("nBarsMax "+nBarsMax);
 		 
 		 var denoMul = 0.785*Dchange*Dchange;
 		 var nDivision = astCalculatedpage4/denoMul;
 		 nBars = Math.ceil(nDivision);
-		 console.log("nBars : "+nBars);
+//		 console.log("nBars : "+nBars);
 		
 		
 		if(Dchange==0){
@@ -338,3 +338,35 @@ function reinCalulateBar(){
 	});
 	
 }
+
+
+ function reinCalculateValues(){
+	reinAnimN();
+	
+	$("#forwardButton").removeClass("disabled");
+    $('#backwardButton').removeClass("disabled");
+	
+	$("#deffCalculate1").prop("hidden",false);
+	$("#calculatedAst1").prop("hidden",false);
+	$("#sizeOfBars1").prop("hidden",false);
+	$("#noOfBars").prop("hidden",false);
+	$("#barNos").prop("hidden",false);
+	
+	$("#selectD1").val(valueD1);
+	$("#textLabel").val(deffPage);
+	$("#text12").val(astCalculatedpage4);
+	$("#longReinForD1").val(Dchange);
+	$("#text13").val(nBars);
+	
+	$("#selectD1").prop("disabled",true);
+	$("#textLabel").prop("disabled",true);
+	$("#text12").prop("disabled",true);
+	$("#longReinForD1").prop("disabled",true);
+	$("#text13").prop("disabled",true);
+	
+	$("#submit_load11").prop("disabled",true);
+	$("#submit_load12").prop("disabled",true);
+	$("#submit_load13").prop("disabled",true);
+	
+}
+

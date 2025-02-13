@@ -16,12 +16,13 @@ var graphArr11 = [];
 steelStr = 0.133;
 function Dcalculate(){
 	
-	
+	$("#forwardButton").addClass("disabled");
+    $('#backwardButton').addClass("disabled");
 	
 //	var bendingMom=10;
 //	var effectCover = 30;
-    console.log("bending Moment"+bendingMom);
-    console.log("effectCover"+effectCover);
+//    console.log("bending Moment"+bendingMom);
+//    console.log("effectCover"+effectCover);
 	var dCalculate = ''
 	              +'<div class = "row">'
                   +'<div class="col-sm-6 marginBottom" id="steelGradeLabel">'
@@ -385,8 +386,7 @@ $("#MsgModal").html(modelImg1);
 	         $("#submit_load8").prop("disabled",true);
 	         $("#text8").prop("disabled",true);
 	         $("#overAllDepthSelect").prop("hidden",false);
-	         $("#forwardButton").removeClass("disabled");
-             $('#backwardButton').removeClass("disabled");
+	        
 	         
 				} else if (ast != astEnter) {
 				  $(".modal-header").html("Error Message");
@@ -410,8 +410,7 @@ $("#MsgModal").html(modelImg1);
 			 $("#submit_load8").prop("disabled",true);
 	         $("#text8").prop("disabled",true);
 	         $("#overAllDepthSelect").prop("hidden",false);
-	         $("#forwardButton").removeClass("disabled");
-             $('#backwardButton').removeClass("disabled");
+	        
 				} else {
 					
 			$("#btnModal").removeClass("btn-danger").addClass("btn-success");
@@ -429,7 +428,7 @@ $("#MsgModal").html(modelImg1);
 			
 		});
 		
-		var ValueD;
+		var ValueD = 0;
 		$("#selectD").change(function(){
 			ValueD = parseInt($("#selectD").val());
 			$("#calculatedAst").prop("hidden",true);
@@ -439,11 +438,19 @@ $("#MsgModal").html(modelImg1);
 		});
 		
 		
-		
+		var cntD = 0;
 		
 		$("#submit_load9").click(function(){
-			console.log("ValueD : "+ValueD);
+//			console.log("ValueD : "+ValueD);
 			
+			if(ValueD==0){
+				$(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Select appropriate values");
+			}else{
+				autoScroll();
+				
             var sub = ValueD-effectCover;
 			var mulConver = bendingMom*Math.pow(10,6);
 			var numMul = 4.6*mulConver;
@@ -478,11 +485,11 @@ $("#MsgModal").html(modelImg1);
 			pressureValue =$("#selectD").children(":selected").attr("value");
 			 
 			 $("#selectD").children('option[value="' + pressureValue + '"]').attr('disabled', true);
-			           console.log("maxCriteria "+maxCriteria);
-						console.log("minCriteria "+minCriteria);
-						console.log("overDepthVal "+overDepthVal);
-						console.log("astCalculated "+astCalculated);
-						console.log("ValueD "+ValueD);
+//			           console.log("maxCriteria "+maxCriteria);
+//						console.log("minCriteria "+minCriteria);
+//						console.log("overDepthVal "+overDepthVal);
+//						console.log("astCalculated "+astCalculated);
+//						console.log("ValueD "+ValueD);
 						
 						var astCalculated1 = parseFloat(astCalculated);
 						var ValueD1 = parseFloat(ValueD);
@@ -509,11 +516,11 @@ $("#MsgModal").html(modelImg1);
 					blinker2();
 					$("#lessThan470").prop("hidden",true);
 					$("#greaterThan470").prop("hidden",false);
-					console.log("message under");
+//					console.log("message under");
 					
 					if(astCalculated1<minCriteria){
 						blinker2();
-						console.log("minimum ast Provide");
+//						console.log("minimum ast Provide");
 						$("#text9").val(minCriteria);
 						ast = minCriteria;
 						astCalculated = ast;
@@ -521,7 +528,14 @@ $("#MsgModal").html(modelImg1);
 					$("#calculatedAst").prop("hidden",false);
 					$("#selectD").prop("disabled",true);
 					$("#submit_load9").prop("disabled",true);
+					$("#submit_load10").prop("disabled",false);
 					
+					if(cntD>2){
+							 $("#forwardButton").removeClass("disabled");
+             				$("#backwardButton").removeClass("disabled");
+						}
+					
+					cntD++;
 					}
 					else if(astCalculated1>maxCriteria){
 						
@@ -537,7 +551,13 @@ $("#MsgModal").html(modelImg1);
 					$("#calculatedAst").prop("hidden",false);
 					$("#selectD").prop("disabled",true);
 					$("#submit_load9").prop("disabled",true);
-						console.log("calculate");
+					$("#submit_load10").prop("disabled",false);
+					
+						if(cntD>1){
+							 $("#forwardButton").removeClass("disabled");
+             				$("#backwardButton").removeClass("disabled");
+						}
+						cntD++;
 						
 					}
 				}
@@ -554,7 +574,7 @@ $("#MsgModal").html(modelImg1);
 				}
 
 			}
-
+           }
 		});
 	
 		 var ast1;
@@ -563,20 +583,20 @@ $("#MsgModal").html(modelImg1);
 			 $("#selectD").prop("disabled",false);
 			 $("#submit_load9").prop("disabled",false);
 			 graphArr11.push(ast1);
-			
+			$("#submit_load10").prop("disabled",true);
 //			 $(".modal-header").html("Error Message");
 //			$(".modal-header").css("background","#23435c");
 //			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
 //            $("#MsgModal").html("Select another depth D and plot the graph.");
-			 
-			 console.log("ast1 : "+ast1);
+			 $("#selectD").val(0);
+//			 console.log("ast1 : "+ast1);
 			                 tempJson={};
 							 tempJson.selectedD = parseInt(ValueD);
 							 tempJson.calAst = astCalculated;
 							 arrGraphStore.push(tempJson);
 							 graphJson.astGraph=arrGraphStore;
 							 
-							 console.log(graphJson);
+//							 console.log(graphJson);
 							 $("#page3Div2").html('');
 							 graphCreate(graphJson);
 			 
@@ -590,7 +610,7 @@ $("#MsgModal").html(modelImg1);
 }
 
 function graphCreate(graphJson) {
-    $("#page3Div2").html('');
+//    $("#page3Div2").html('');
     var xdata = [];
     var ydata = [];
 
@@ -721,4 +741,8 @@ function blinker2()
         
     } 
 	setTimeout('blinker2()', 1000);
+}
+
+function autoScroll() {
+    $("html, body").animate({ scrollTop: $(document).height() }, 1000); // Scroll to bottom in 5 sec
 }
