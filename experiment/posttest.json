@@ -2,18 +2,20 @@
  {
   "version": 2.0,
   "questions": [
-    {
-      "question": " What is the primary purpose of providing longitudinal reinforcement in a rectangular reinforced concrete beam?",
+  
+	{
+      "question": "What does the depth of the neutral axis represent in a reinforced concrete beam?",
       "answers": {
-         "a": "Increase compressive strength  ",
-        "b": "Enhance tensile strength  ",
-        "c": "Improve durability  ",
-        "d": "Reduce deflection"
+        "a": "Maximum deflection point  ",
+        "b": "Location of zero bending stresses  ",
+        "c": "Size of the beam's cross-section  ",
+        "d": "Maximum tensile stress point  "
       },
-      
+     
       "correctAnswer": "b",
       "difficulty": "beginner"
     },
+ 
     {
       "question": "According to IS 456:2000, what is the minimum percentage of tensile reinforcement required in a rectangular beam?",
       "answers": {
