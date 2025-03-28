@@ -26,18 +26,19 @@
       "correctAnswer": "c",
       "difficulty": "beginner"
     },
-    {
-      "question": "What does the depth of the neutral axis represent in a reinforced concrete beam?",
+	{
+      "question": " What is the primary purpose of providing longitudinal reinforcement in a rectangular reinforced concrete beam?",
       "answers": {
-        "a": "Maximum deflection point  ",
-        "b": "Location of zero bending stresses  ",
-        "c": "Size of the beam's cross-section  ",
-        "d": "Maximum tensile stress point  "
+         "a": "Increase compressive strength  ",
+        "b": "Enhance tensile strength  ",
+        "c": "Improve durability  ",
+        "d": "Reduce deflection"
       },
-     
+      
       "correctAnswer": "b",
       "difficulty": "beginner"
     },
+    
 	{
       "question": "When is shear reinforcement required in a rectangular RC beam?",
       "answers": {

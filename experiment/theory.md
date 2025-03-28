@@ -41,20 +41,24 @@ When the end of a beam extends beyond the support, it is referred to as an overh
 #### Type Of Sections :
 
 ##### Balanced Section or Critical Section:
+
 - Strain in steel and Strain in concrete reach their maximum values simultaneously.
 
 ##### Under-Reinforced Section:
+
 - A section having steel percentage less than the critical percentage is known as under reinforced section.
 - Tensile strain in steel reaches its yielding limit first
 - It gives sufficient warning of impending failure.
 
 ##### Over Reinforced Section:
+
 - Compressive Strain in concrete reaches its ultimate value first.
 - Sudden Failure of Section occurs by crushing of concrete in compression.
 
  ![*beam7*](images/beam7.png)
 
 #### Preference for Under-Reinforced Section :
+
 - Under-reinforced sections are often preferred because they exhibit ductile behaviour, allowing for warning signs before failure.
 - The gradual yielding of steel provides a more forgiving and predictable response, making it easier to assess and repair structural issues.
 - Ductile failure allows for redistribution of loads and prevents sudden, catastrophic collapses.
