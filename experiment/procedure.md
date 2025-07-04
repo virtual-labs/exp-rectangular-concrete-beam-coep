@@ -1,38 +1,53 @@
+# PROCEDURE
 
 
-### Configuration :
-- Configure the parameters to Design a singly reinforced beam
-- Width of support w1 and w2 ranges between 0.23 to 2 (m). Also nomial cover ranges between 20 to 70 (mm) 
-- Click the "Configure" button, then click the "Next" arrow to proceed to the next level 
+## Configuration
 
-### Calculations :
-- Calculate effective cover and submit your answer. After three incorrect attempts, the formula and correct answer will be provided 
-- Similarly calculate effective cover, factored load, effective span, shear force and bending moment 
-- Click on Next Arrow for next level after calculation.
+- Select the width of supports **w1** and **w2** within the range of **0.23 m to 2 m**.
+- Select the **nominal cover** in the range of **20 mm to 70 mm**.
+- After setting the parameters, click on the **“Configure”** button.
+- Proceed to the next step by clicking the **“Next”** button.
 
-### OverAll Depth Vs ASt Graph with Calculations :
+## Calculations
 
-- Calculate the required effective depth for a balanced section and provide the overall depth (D). Similarly, calculate the AST for the balanced section
-- Select different values of total depth (D) in mm, submit them, then click the 'Plot Graph' button to observe the graph
-- Repeat for minimum 4 readings and click on "Next" arrow  
+- Calculate **effective cover** and submit your answer. After three incorrect attempts, the formula and correct answer will be displayed.
+- Similarly, calculate:
+- Effective cover  
+- Factored load  
+- Effective span  
+- Shear force  
+- Bending moment  
+- Click on **Next Arrow** for the next level after calculation.
 
+## Overall Depth v/s Ast Graph with Calculations
 
-### Rein Bars Calculate
-- Select the provided total depth value (D); the effective depth and Ast will be calculated
-- Select bar diameter and calculate number of bars required . Trials can be taken by changing bar diameter and observe the changes
-- After Trials click on "Next" arrow  for next level
+- Calculate the **effective depth** required for a **balanced section**.
+- Determine the corresponding **overall depth (D)**.
+- Compute the **area of steel (Ast)** for the balanced section.
+- Select different values of **total depth (D)** in mm.
+- Submit the values and click on the **“Plot Graph”** button to observe the **D v/s Ast graph**.
+- Repeat this for a **minimum of 4 readings**.
+- Click the **“Next”** arrow to continue.
 
+## Calculation of Reinforcement Bars
 
-### Calculation for shear force for critical section: 
-- Calculate shear force at critical section
-- Calculate shear stress at critical section 
-- Design Shear strength of concrete
-- Calculate Maximum shear strength
-- Provide 2 legged stirrups and select Grade of steel for stirrups you will get the spacing
+- Select the provided **total depth value (D)**; the **effective depth** and **Ast** will be calculated.
+- Select **bar diameter** and calculate the **number of bars required**.
+- Trials can be taken by changing the bar diameter and observing the changes.
+- After the trials, click on the **"Next"** arrow for the next level.
 
+## Calculation for Shear Force at Critical Section
 
-### Economical:
-- Select the garde of steel for longitudinal reinforcement and enter its cost per kg, click on "Submit"
-- Select the garde of steel for longitudinal stirrup enter its cost per kg, click on "Submit"
-- Select the garde of concrete enter its cost per kg, click on "Submit"
-- Observe the cost for different values of D.
+- Calculate **shear force** at the critical section.
+- Calculate **shear stress** at the critical section.
+- Compute **design shear strength of concrete**.
+- Calculate **maximum shear strength**.
+- Provide **2-legged stirrups** and select the **grade of steel for stirrups**. **Spacing** will be obtained.
+
+## Economical
+
+- Select the **grade of steel for longitudinal reinforcement**, enter its **cost per kg**, and then click on **"Submit"**.
+- Select the **grade of steel for stirrups**, enter its **cost per kg**, and click on **"Submit"**.
+- Select the **grade of concrete**, enter its **cost per kg**, and click on **"Submit"**.
+- Observe the **cost for different values of D**.
+
