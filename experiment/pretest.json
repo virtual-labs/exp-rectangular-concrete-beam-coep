@@ -40,15 +40,15 @@
     },
     
 	{
-      "question": "When is shear reinforcement required in a rectangular RC beam?",
+      "question": "When a simply supported beam is subjected to sagging, where does the compression occur?",
       "answers": {
-        "a": "When the beam is excessively deep  ",
-        "b": "When shear stress exceeds the capacity of concrete  ",
-        "c": "When the beam is subjected to pure axial loads  ",
-        "d": "When the beam is long and slender  "
+        "a": "At the bottom fibers of the beam",
+        "b": "Along the neutral axis  ",
+        "c": "Uniformly across the section  ",
+        "d": "At the top fibers of the beam"
       },
      
-      "correctAnswer": "b",
+      "correctAnswer": "d",
       "difficulty": "beginner"
     },
 	

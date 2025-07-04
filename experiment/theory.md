@@ -38,11 +38,19 @@ When the end of a beam extends beyond the support, it is referred to as an overh
 
 ![*beam6*](images/beam6.png)
 
+### Limit State Design:
+The design of beams is carried out using the Limit State Design (LSD) method as per IS 456:2000, which ensures both safety and serviceability. In this method, partial safety factors are applied to both loads and material strengths to account for uncertainties. There are two types of Limit States which are:
+1.	Limit State of Collapse: The limit state of collapse ensures that the structure has sufficient strength to prevent failure under maximum (factored) loads. It is concerned with safety against collapse due to bending (flexure), shear, torsion and axial forces.
+2.	Limit State of Serviceability: The limit state of serviceability ensures that the structure remains functional throughout its intended lifespan. It checks for deflection, cracking of concrete and durability issues such as corrosion.
+
+ 
+
 #### Type Of Sections :
 
-##### Balanced Section or Critical Section:
+##### Balanced Section:
 
-- Strain in steel and Strain in concrete reach their maximum values simultaneously.
+- Both concrete in compression and steel in tension reach their permissible stress limits simultaneously.
+- Balanced section is used to determine the limiting moment of resistance of a section.
 
 ##### Under-Reinforced Section:
 
@@ -63,8 +71,16 @@ When the end of a beam extends beyond the support, it is referred to as an overh
 - The gradual yielding of steel provides a more forgiving and predictable response, making it easier to assess and repair structural issues.
 - Ductile failure allows for redistribution of loads and prevents sudden, catastrophic collapses.
 
+#### Neutral axis and depth determination:
 
+Neutral axis (N. A.) in a reinforced concrete beam is the beam’s cross-section where there is no longitudinal stress or strain due to bending. It can also be considered as a dividing line between the tension and compression zones. The N. A. depth can be determined as:
 
+ ![*f1*](images/f1.png)
+ 
+#### Area of steel:
+Area of steel can be determined as:
+ 
+ ![*f2*](images/f2.png)
 
 
 
