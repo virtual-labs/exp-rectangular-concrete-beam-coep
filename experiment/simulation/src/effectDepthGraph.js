@@ -442,7 +442,10 @@ $("#MsgModal").html(modelImg1);
 		
 		$("#submit_load9").click(function(){
 //			console.log("ValueD : "+ValueD);
-			
+		
+			 $("#forwardButton").removeClass("disabled");
+             $("#backwardButton").removeClass("disabled");
+		
 			if(ValueD==0){
 				$(".modal-header").html("Error Message");
 			$(".modal-header").css("background","#9c1203b0");
@@ -509,7 +512,7 @@ $("#MsgModal").html(modelImg1);
 			}else{
 
 				valMainArr.push(ValueD1);
-				
+			
 				
 				if(overDepthVal<ValueD1)
 				{
@@ -529,6 +532,7 @@ $("#MsgModal").html(modelImg1);
 					$("#selectD").prop("disabled",true);
 					$("#submit_load9").prop("disabled",true);
 					$("#submit_load10").prop("disabled",false);
+					
 					
 					if(cntD>2){
 							 $("#forwardButton").removeClass("disabled");

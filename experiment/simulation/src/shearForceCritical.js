@@ -793,6 +793,8 @@ $("#submit_load19").click(function(){
 		asvCalculate();
 		autoScroll();
 	$("#divRelTemp").html('<center><label style=" margin-left: 10px;font-size: x-large; font-style: italic; font-weight: bold; margin-top:5px;" id = "relTempMsgCond1">Provide 2 legged stirrups of '+fysChange+' mm &empty;<sub>s</sub> @ '+(roundDownToNearestFive(condArr[0]))+' mm c/c</label></center>');
+	
+	
 
 	}
 });
@@ -868,6 +870,9 @@ $("#submit_load22").click(function(){
                      svCalculateCond3();
                      autoScroll();
              	$("#divRelTemp1").html('<center><label style=" margin-left: 10px;font-size: x-large; font-style: italic; font-weight: bold; margin-top:5px;" id = "relTempMsgCond1">Provide 2 legged stirrups of '+fysChange3+' mm &empty;<sub>s</sub> @ '+(roundDownToNearestFive(condArr[0]))+' mm c/c</label></center>');
+				
+				
+				
 
 				} else if (vcVal != vcValEnter) {
 				  $(".modal-header").html("Error Message");
@@ -893,7 +898,9 @@ $("#submit_load22").click(function(){
 	        svCalculateCond3();
 	        autoScroll();
              	$("#divRelTemp1").html('<center><label style=" margin-left: 10px;font-size: x-large; font-style: italic; font-weight: bold; margin-top:5px;" id = "relTempMsgCond1">Provide 2 legged stirrups of '+fysChange3+' mm &empty;<sub>s</sub> @ '+(roundDownToNearestFive(condArr[0]))+' mm c/c</label></center>');
-        
+                
+				
+				
 				} else {
 					
 			$("#btnModal").removeClass("btn-danger").addClass("btn-success");

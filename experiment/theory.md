@@ -1,4 +1,6 @@
 
+## Theory:
+
 ## Introduction to Beams:
 
 In any type of structure, the basic structural elements are beams, columns, slabs, footings, etc. They are subjected to bending, transverse shear, torsion and axial tension or compression. According to the beam theory, a beam is a structure which has one of its dimensions much larger than the other two. They are usually made up of straight prismatic members that span in between supports that may be of any form. Beams are usually horizontal structural elements that carry loads perpendicular to their longitudinal direction. Each beam structural element is defined by its geometric and material properties. In case of design of beam element, there is more flexibility in choosing the size and type of materials that work best for the structure. The section and material properties are practically selected based on their cost, size and fire rating. Loads on a beam induce internal compression, tensile and shear stresses. Typically under gravity loads, the beam bends into a slightly circular arc, with its original length compressed at the top ( Compression) and correspondingly stretched at the bottom (Tension) is known as Sagging while a configuration with Tension at the top fibers and Compression at the bottom fibers is known as Hogging.

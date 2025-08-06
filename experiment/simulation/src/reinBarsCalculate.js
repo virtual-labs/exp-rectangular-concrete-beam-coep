@@ -158,6 +158,18 @@ function reinCalulateBar(){
 			
 			$("#textLabel").val(deffPage);
 			page4ProvidedAst();
+			
+			if($("#text12").val()==""){
+				$(".modal-header").html("Error Message");
+			$(".modal-header").css("background","#9c1203b0");
+			$("#btnModal").removeClass("btn-success").addClass("btn-danger");
+			$("#MsgModal").html("Select Another Depth");
+			$("#selectD1").val(0);
+			$("#selectD1").prop("disabled",false);
+			$("#submit_load11").prop("disabled",false);
+			
+			}
+			
 		}
 		
 	});
@@ -201,6 +213,8 @@ function reinCalulateBar(){
 			}
 			
 			$("#text12").val(astCalculatedpage4);
+			
+			
 			
 	}
 	
