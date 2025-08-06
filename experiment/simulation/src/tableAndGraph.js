@@ -252,6 +252,7 @@ var htmTg = '<div class="row" id="gsLongRein" >'
 					
 				}else{
 			
+			
 			 
 			var multiples = [12, 16, 20, 25, 28, 32];
 			var numbers = [];
@@ -347,12 +348,30 @@ let index = areaArr.indexOf(valueToFind);
 //							 console.log(finJson);
 			 
 			}
+			
+			
+			showAlert();
+			
 			}
 		});	
 					
 	}
 	
-
+   function showAlert(){
+	   Swal.fire({
+        icon: 'success',
+        title: 'Experiment Completed!',
+        confirmButtonText: 'Ok',
+        customClass: {
+          icon: 'custom-icon',
+          popup: 'custom-popup',
+          title: 'custom-title',
+          confirmButton: 'custom-confirm-button',
+          cancelButton: 'custom-cancel-button',
+        }
+      });
+   }
+   
 	function findMultiplierAndProduct(givenValue, areaArr) {
   let closestProduct = null;
   let bestReference = null;
