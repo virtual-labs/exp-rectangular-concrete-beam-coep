@@ -63,6 +63,19 @@
      
       "correctAnswer": "c",
       "difficulty": "beginner"
+    },
+	
+	{
+      "question": "In bending under gravity loads, when the top fibers are in compression and bottom fibers are in tension, the beam is said to be in:",
+      "answers": {
+        "a": "Hogging",
+        "b": "Buckling",
+        "c": "Sagging",
+        "d": "Twisting"
+      },
+     
+      "correctAnswer": "c",
+      "difficulty": "beginner"
     }
   
   ]
