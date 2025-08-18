@@ -63,6 +63,30 @@
      
       "correctAnswer": "c",
       "difficulty": "beginner"
+    },
+	{
+      "question": "An under-reinforced section fails by:",
+      "answers": {
+        "a": "Crushing of concrete in compression ",
+        "b": "Yielding of steel in tension first",
+        "c": "Shear cracking",
+        "d": "Buckling of reinforcement"
+      },
+     
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+	{
+      "question": "The neutral axis in a beam separates:",
+      "answers": {
+        "a": "Compression zone from shear zone ",
+        "b": "Compression zone from tension zone",
+        "c": "Two compression zones",
+        "d": "Two tension zones"
+      },
+     
+      "correctAnswer": "b",
+      "difficulty": "beginner"
     }
 	
 
