@@ -1,5 +1,5 @@
 
-## Theory: 
+## Theory 
 
 ## Introduction to Beams:
 
