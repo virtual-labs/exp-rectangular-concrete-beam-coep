@@ -319,7 +319,7 @@ let index = areaArr.indexOf(valueToFind);
 					+ '   <th><center>Area of Tension reinforcement (mm)<sup>2</sup> </center></th>'
 					+ '  <th><center>Provided 2 bars of 12 &empty; mm </center> </th>'
                     + '  <th><center>Shear reinforcement</center> </th>'
-                    + '  <th><center>Cost</center> </th>' 
+                    + '  <th><center>Cost(Rs)</center> </th>' 
 					+ '   </tr>'
 					+ '  </thead>'
 					+ '   <tbody>'
