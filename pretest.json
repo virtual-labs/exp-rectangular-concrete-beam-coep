@@ -1,0 +1,82 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": " What is the primary function of providing reinforcement in a rectangular reinforced concrete beam?",
+      "answers": {
+         "a": "To increase the compressive strength of the beam",
+        "b": "To enhance the beam's aesthetic appeal",
+        "c": "To reduce the weight of the beam",
+        "d": "To resist tensile forces and improve flexural capacity"
+      },
+      
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In a simply Supported rectangular RC beam, where is the maximum moment generally located?",
+      "answers": {
+        "a": "At the support  ",
+        "b": "At the midspan  ",
+        "c": "At the point of maximum deflection  ",
+        "d": "At the free end  "
+   
+      },
+     
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+	{
+      "question": " What is the primary purpose of providing longitudinal reinforcement in a rectangular reinforced concrete beam?",
+      "answers": {
+         "a": "Increase compressive strength  ",
+        "b": "Enhance tensile strength  ",
+        "c": "Improve durability  ",
+        "d": "Reduce deflection"
+      },
+      
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    
+	{
+      "question": "When a simply supported beam is subjected to sagging, where does the compression occur?",
+      "answers": {
+        "a": "At the bottom fibers of the beam",
+        "b": "Along the neutral axis  ",
+        "c": "Uniformly across the section  ",
+        "d": "At the top fibers of the beam"
+      },
+     
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+	
+	{
+      "question": "What are the primary failure modes of a rectangular RC beam?",
+      "answers": {
+        "a": "Tensile and compressive failure  ",
+        "b": "Shear and torsional failure  ",
+        "c": "Flexural and shear failure  ",
+        "d": "Bending and axial failure  "
+      },
+     
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+	
+	{
+      "question": "In bending under gravity loads, when the top fibers are in compression and bottom fibers are in tension, the beam is said to be in:",
+      "answers": {
+        "a": "Hogging",
+        "b": "Buckling",
+        "c": "Sagging",
+        "d": "Twisting"
+      },
+     
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    }
+  
+  ]
+}

@@ -1,0 +1,95 @@
+
+ {
+  "version": 2.0,
+  "questions": [
+  
+	{
+      "question": "What does the depth of the neutral axis represent in a reinforced concrete beam?",
+      "answers": {
+        "a": "Maximum deflection point  ",
+        "b": "Location of zero bending stresses  ",
+        "c": "Size of the beam's cross-section  ",
+        "d": "Maximum tensile stress point  "
+      },
+     
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+ 
+    {
+      "question": "According to IS 456:2000, what is the minimum percentage of tensile reinforcement required in a rectangular beam?",
+      "answers": {
+        "a": "0.15%  ",
+        "b": "0.20%  ",
+        "c": "0.25%  ",
+        "d": "0.30% "
+      },
+     
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In the design of a rectangular beam, what does the term effective cover refer to?",
+      "answers": {
+        "a": "Depth of the beam  ",
+        "b": "Distance between supports  ",
+        "c": "Distance between the outer face of the concrete and the center of the outermost reinforcement  ",
+        "d": "Thickness of the beam"
+      },
+     
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+	{
+      "question": "What is the purpose of providing shear reinforcement, such as stirrups, in a rectangular beam?",
+      "answers": {
+        "a": "Enhance compressive strength  ",
+        "b": "Resist torsional forces  ",
+        "c": "Increase ductility  ",
+        "d": "Reduce deflection"
+      },
+     
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+	{
+      "question": "In a simply supported rectangular beam, where is the maximum bending moment typically located?",
+      "answers": {
+        "a": "At the support  ",
+        "b": "Near the support but not at the center",
+        "c": "At midspan  ",
+        "d": "At the free end "
+      },
+     
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+	{
+      "question": "An under-reinforced section fails by:",
+      "answers": {
+        "a": "Crushing of concrete in compression ",
+        "b": "Yielding of steel in tension first",
+        "c": "Shear cracking",
+        "d": "Buckling of reinforcement"
+      },
+     
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+	{
+      "question": "The neutral axis in a beam separates:",
+      "answers": {
+        "a": "Compression zone from shear zone ",
+        "b": "Compression zone from tension zone",
+        "c": "Two compression zones",
+        "d": "Two tension zones"
+      },
+     
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    }
+	
+
+  
+  ]
+}
